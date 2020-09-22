@@ -8,7 +8,7 @@ export class View {
   static initListeners () {
     /* The user clicks on the background */
     const imgBackground = document.getElementById('img-background')
-    imgBackground.addEventListener('click', this.placeBoxTarget)
+    imgBackground.addEventListener('click', this.placeBoxTarget.bind(View))
   }
 
   static placeBoxTarget (e) {
@@ -27,5 +27,47 @@ export class View {
     /* Placing boxTarget on the coordinates of the user's click */
     boxTarget.style.left = e.pageX - (boxTargetWidth / 2) + 'px'
     boxTarget.style.top = e.pageY - (boxTargetHeight / 2) + 'px'
+
+    this.displaySearchMenu(e)
+  }
+
+  static displaySearchMenu (e) {
+    const rootElement = document.getElementById('app')
+
+    /* Checking if there is a menu created already. If so deleting it */
+    const previousMenuSearch = document.getElementById('menu-search-container')
+    if (previousMenuSearch) previousMenuSearch.remove()
+
+    /* Creating a search menu */
+    const menuSearchContainer =
+      createElement('div', null, 'menu-search-container', rootElement)
+
+    const optionWaldo = createElement(
+      'div',
+      'menu-search-option',
+      'menu-search-option-waldo',
+      menuSearchContainer
+    )
+    optionWaldo.textContent = 'Waldo'
+
+    const optionOdlaw = createElement(
+      'div',
+      'menu-search-option',
+      'menu-search-option-odlaw',
+      menuSearchContainer
+    )
+    optionOdlaw.textContent = 'Odlaw'
+
+    const optionWizard = createElement(
+      'div',
+      'menu-search-option',
+      'menu-search-option-wizard',
+      menuSearchContainer
+    )
+    optionWizard.textContent = 'Wizard'
+
+    /* Placing menuSearchContainer on the coordinates of the user's click */
+    menuSearchContainer.style.left = e.pageX + 40 + 'px'
+    menuSearchContainer.style.top = e.pageY - 15 + 'px'
   }
 }
