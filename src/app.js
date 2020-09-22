@@ -16,7 +16,8 @@ firebase.initializeApp(firebaseConfig)
 
 class Controller {
   static init () {
-    View.init()
+    const view = new View()
+    console.log(view)
   }
 }
 
