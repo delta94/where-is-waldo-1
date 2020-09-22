@@ -10,6 +10,7 @@ export class View {
     /* The user clicks on the background */
     const imgBackground = document.getElementById('img-background')
     imgBackground.addEventListener('click', this.placeBoxTarget.bind(View))
+    imgBackground.addEventListener('click', this.displaySearchMenu.bind(View))
 
     /* Adding listeners to search menu options
       WHEN search menu has been created */
@@ -38,8 +39,6 @@ export class View {
     /* Placing boxTarget on the coordinates of the user's click */
     boxTarget.style.left = e.pageX - (boxTargetWidth / 2) + 'px'
     boxTarget.style.top = e.pageY - (boxTargetHeight / 2) + 'px'
-
-    this.displaySearchMenu(e)
   }
 
   static displaySearchMenu (e) {
