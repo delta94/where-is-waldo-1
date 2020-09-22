@@ -6,3 +6,12 @@ body {
   display: flex;
   justify-content: center;
 }
+
+#box-target {
+  position: absolute;
+
+  height: 50px;
+  width: 50px;
+
+  border: 5px solid;
+}
