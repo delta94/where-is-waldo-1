@@ -14,6 +14,10 @@ export class View {
   static placeBoxTarget (e) {
     const rootElement = document.getElementById('app')
 
+    /* Checking if there is a box created already. If so deleting it */
+    const previousBoxTarget = document.getElementById('box-target')
+    if (previousBoxTarget) previousBoxTarget.remove()
+
     const boxTarget = createElement('div', null, 'box-target', rootElement)
     const boxTargetHeight =
       convertToNumberFromCSS(window.getComputedStyle(boxTarget).height)
