@@ -1,4 +1,5 @@
 import { createElement, convertToNumberFromCSS } from '../utilities/helperFunctions'
+import PubSub from 'pubsub-js'
 
 export class View {
   static init () {
@@ -9,6 +10,16 @@ export class View {
     /* The user clicks on the background */
     const imgBackground = document.getElementById('img-background')
     imgBackground.addEventListener('click', this.placeBoxTarget.bind(View))
+
+    /* Adding listeners to search menu options
+      WHEN search menu has been created */
+    PubSub.subscribe('search_menu_created', (msg, options) => {
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          console.log('Works!')
+        })
+      })
+    })
   }
 
   static placeBoxTarget (e) {
@@ -69,5 +80,13 @@ export class View {
     /* Placing menuSearchContainer on the coordinates of the user's click */
     menuSearchContainer.style.left = e.pageX + 40 + 'px'
     menuSearchContainer.style.top = e.pageY - 15 + 'px'
+
+    /* Notifying this.initListeners() function so that
+      it can create event listeners for the options */
+    PubSub.publish('search_menu_created', [
+      optionWaldo,
+      optionOdlaw,
+      optionWizard
+    ])
   }
 }
