@@ -27,10 +27,5 @@ export class View {
     /* Placing boxTarget on the coordinates of the user's click */
     boxTarget.style.left = e.pageX - (boxTargetWidth / 2) + 'px'
     boxTarget.style.top = e.pageY - (boxTargetHeight / 2) + 'px'
-
-    // if (e.pageY > 358 && e.pageY < 432 &&
-    //     e.pageX > 569 && e.pageX < 594) {
-    //   console.log('Found Waldo!')
-    // }
   }
 }
