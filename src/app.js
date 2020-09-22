@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app'
-import 'firebase/firestore'
+import './styles/style.css'
+import { View } from './components/View'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCfRM7X4m5le2L27z6kyux-gheNQTxxwOA',
@@ -13,4 +14,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-console.log('Hello there!')
+class Controller {
+  static init () {
+    View.init()
+  }
+}
+
+Controller.init()
