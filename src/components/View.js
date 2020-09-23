@@ -55,6 +55,12 @@ export class View {
       /* Placing boxTarget on the coordinates of the user's click */
       boxTarget.style.left = e.pageX - (boxTargetWidth / 2) + 'px'
       boxTarget.style.top = e.pageY - (boxTargetHeight / 2) + 'px'
+
+      /* Sending the coordinates of the click to the Controller */
+      PubSub.publish('background_clicked', {
+        userX: e.pageX,
+        userY: e.pageY
+      })
     }
   }
 

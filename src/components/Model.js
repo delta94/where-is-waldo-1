@@ -33,4 +33,18 @@ export class Model {
       console.log('(When getting the coordinates): ' + error)
     }
   }
+
+  checkIfCharacterFound (userCoordinates) {
+    const { userX, userY } = userCoordinates
+
+    if (userY > this.coordinates.yMin &&
+        userY < this.coordinates.yMax &&
+        userX > this.coordinates.xMin &&
+        userX < this.coordinates.xMax) {
+      console.log('Found Oldaw!')
+      return true
+    } else {
+      return false
+    }
+  }
 }

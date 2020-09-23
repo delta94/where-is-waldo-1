@@ -32,6 +32,11 @@ class Controller {
     PubSub.subscribe('background_loaded', (msg, URL) => {
       this.view.loadBackgroundImage(URL)
     })
+
+    /* Checking if the the coordinates of the click are correct */
+    PubSub.subscribe('background_clicked', (msg, userCoordinates) => {
+      this.model.checkIfCharacterFound(userCoordinates)
+    })
   }
 
   initServerData () {
