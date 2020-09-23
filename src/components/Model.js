@@ -4,7 +4,7 @@ import PubSub from 'pubsub-js'
 
 export class Model {
   constructor () {
-    this.coordinates = ''
+    this.coordinatesArray = []
   }
 
   async getBackgroundImageFromServer () {
@@ -23,12 +23,14 @@ export class Model {
 
   async getCoordinatesFromServer () {
     try {
-      const coordinates = firebase.firestore().collection('coordinates')
+      const coordinatesCollection =
+        firebase.firestore().collection('coordinates')
 
-      const response = await coordinates.doc('odlaw').get()
-      const odlawCoordinatesObject = await response.data()
+      const response = await coordinatesCollection.get()
 
-      this.coordinates = odlawCoordinatesObject
+      response.forEach(responsePiece => {
+        this.coordinatesArray.push(responsePiece.data())
+      })
     } catch (error) {
       console.log('(When getting the coordinates): ' + error)
     }
@@ -37,14 +39,14 @@ export class Model {
   checkIfCharacterFound (userCoordinates) {
     const { userX, userY } = userCoordinates
 
-    if (userY > this.coordinates.yMin &&
-        userY < this.coordinates.yMax &&
-        userX > this.coordinates.xMin &&
-        userX < this.coordinates.xMax) {
-      console.log('Found Oldaw!')
-      return true
-    } else {
-      return false
-    }
+    return this.coordinatesArray.some(item => {
+      if (userY > item.yMin && userY < item.yMax &&
+          userX > item.xMin && userX < item.xMax) {
+        console.log(`Found ${item.characterName}!`)
+        return true
+      } else {
+        return false
+      }
+    })
   }
 }
