@@ -58,8 +58,8 @@ export class View {
 
       /* Sending the coordinates of the click to the Controller */
       PubSub.publish('background_clicked', {
-        userX: e.pageX,
-        userY: e.pageY
+        userX: e.offsetX,
+        userY: e.offsetY
       })
     }
   }
