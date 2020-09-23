@@ -14,6 +14,7 @@ export class Model {
       const response = await bgImages.doc('background-1').get()
       const responseObject = response.data()
 
+      /* Sending it to the Controller */
       PubSub.publish('background_loaded', responseObject.URL)
     } catch (error) {
       console.log('(When getting the background image): ' + error)

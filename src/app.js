@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app'
 import PubSub from 'pubsub-js'
+
 import './styles/style.css'
 import { View } from './components/View'
 import { Model } from './components/Model'

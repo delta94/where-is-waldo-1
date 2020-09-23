@@ -2,6 +2,7 @@ import {
   createElement,
   convertToNumberFromCSS
 } from '../utilities/helperFunctions'
+
 import PubSub from 'pubsub-js'
 
 export class View {
