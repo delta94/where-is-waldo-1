@@ -29,6 +29,11 @@ export class View {
     })
   }
 
+  loadBackgroundImage (URL) {
+    const imgBackground = document.getElementById('img-background')
+    imgBackground.src = URL
+  }
+
   placeBoxTarget (e) {
     const rootElement = document.getElementById('app')
 

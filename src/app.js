@@ -1,6 +1,8 @@
 import * as firebase from 'firebase/app'
+import PubSub from 'pubsub-js'
 import './styles/style.css'
 import { View } from './components/View'
+import { Model } from './components/Model'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCfRM7X4m5le2L27z6kyux-gheNQTxxwOA',
@@ -15,10 +17,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 class Controller {
-  static init () {
-    const view = new View()
-    console.log(view)
+  constructor () {
+    this.initListeners()
+    this.initServerData()
+
+    this.view = new View()
+  }
+
+  initListeners () {
+    /* Passing the background to the View once  the Model has gotten it
+      from the server */
+    PubSub.subscribe('background_loaded', (msg, URL) => {
+      this.view.loadBackgroundImage(URL)
+    })
+  }
+
+  initServerData () {
+    Model.getBackgroundImageFromServer()
   }
 }
 
-Controller.init()
+const controller = new Controller()
+console.log(controller)
