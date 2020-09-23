@@ -7,6 +7,34 @@ body {
   justify-content: center;
 }
 
+#header-progress {
+  display: flex;
+  justify-content: center;
+
+  position: fixed;
+  width: 100%;
+  height: 70px;
+
+  background-color: white;
+  outline: 1px solid;
+}
+.progress-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 7px;
+
+  font-size: 22px;
+}
+.progress-item label {
+  padding: 0 5px;
+}
+
+#img-background {
+  margin-top: 30px;
+}
+
 #box-target {
   position: absolute;
 
