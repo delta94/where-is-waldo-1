@@ -18,10 +18,11 @@ firebase.initializeApp(firebaseConfig)
 
 class Controller {
   constructor () {
+    this.model = new Model()
+    this.view = new View()
+
     this.initListeners()
     this.initServerData()
-
-    this.view = new View()
   }
 
   initListeners () {
@@ -33,7 +34,8 @@ class Controller {
   }
 
   initServerData () {
-    Model.getBackgroundImageFromServer()
+    this.model.getBackgroundImageFromServer()
+    this.model.getCoordinatesFromServer()
   }
 }
 

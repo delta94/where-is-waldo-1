@@ -3,7 +3,11 @@ import 'firebase/firestore'
 import PubSub from 'pubsub-js'
 
 export class Model {
-  static async getBackgroundImageFromServer () {
+  constructor () {
+    this.coordinates = ''
+  }
+
+  async getBackgroundImageFromServer () {
     try {
       const bgImages = firebase.firestore().collection('images')
 
@@ -13,6 +17,19 @@ export class Model {
       PubSub.publish('background_loaded', responseObject.URL)
     } catch (error) {
       console.log('(When getting the background image): ' + error)
+    }
+  }
+
+  async getCoordinatesFromServer () {
+    try {
+      const coordinates = firebase.firestore().collection('coordinates')
+
+      const response = await coordinates.doc('odlaw').get()
+      const odlawCoordinatesObject = await response.data()
+
+      this.coordinates = odlawCoordinatesObject
+    } catch (error) {
+      console.log('(When getting the coordinates): ' + error)
     }
   }
 }
