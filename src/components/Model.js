@@ -5,6 +5,12 @@ import PubSub from 'pubsub-js'
 export class Model {
   constructor () {
     this.coordinatesArray = []
+
+    this.gameProgress = {
+      waldo: false,
+      odlaw: false,
+      wizard: false
+    }
   }
 
   async getBackgroundImageFromServer () {
@@ -43,10 +49,14 @@ export class Model {
       if (userY > item.yMin && userY < item.yMax &&
           userX > item.xMin && userX < item.xMax) {
         console.log(`Found ${item.characterName}!`)
-        return true
+        return item.characterName
       } else {
         return false
       }
     })
+  }
+
+  updateGameProgressData (characterName) {
+    this.gameProgress[characterName] = true
   }
 }

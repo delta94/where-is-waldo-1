@@ -33,9 +33,14 @@ class Controller {
       this.view.loadBackgroundImage(URL)
     })
 
-    /* Checking if the the coordinates of the click are correct */
+    /* Checking if the the coordinates of the click are correct.
+      If so, then updating game progress */
     PubSub.subscribe('background_clicked', (msg, userCoordinates) => {
-      this.model.checkIfCharacterFound(userCoordinates)
+      const characterFound = this.model.checkIfCharacterFound(userCoordinates)
+
+      if (characterFound) {
+        this.model.updateGameProgressData(characterFound)
+      }
     })
   }
 
