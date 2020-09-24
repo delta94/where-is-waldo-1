@@ -45,11 +45,11 @@ export class Model {
   checkIfCharacterFound (userCoordinates) {
     const { userX, userY } = userCoordinates
 
-    return this.coordinatesArray.some(item => {
+    return this.coordinatesArray.find(item => {
       if (userY > item.yMin && userY < item.yMax &&
           userX > item.xMin && userX < item.xMax) {
         console.log(`Found ${item.characterName}!`)
-        return item.characterName
+        return item
       } else {
         return false
       }

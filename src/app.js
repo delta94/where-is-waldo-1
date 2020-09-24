@@ -39,7 +39,7 @@ class Controller {
       const characterFound = this.model.checkIfCharacterFound(userCoordinates)
 
       if (characterFound) {
-        this.model.updateGameProgressData(characterFound)
+        this.model.updateGameProgressData(characterFound.characterName)
       }
     })
   }
