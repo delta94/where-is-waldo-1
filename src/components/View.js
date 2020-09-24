@@ -9,6 +9,7 @@ export class View {
   constructor () {
     this.isBoxTargetClicked = false
     this.isMenuSearchClicked = false
+    this.currentClickCoordinates = {}
 
     this.initListeners()
     this.resetGameDOM()
@@ -24,9 +25,10 @@ export class View {
       WHEN search menu has been created */
     PubSub.subscribe('search_menu_created', (msg, options) => {
       options.forEach(option => {
-        option.addEventListener('click', () => {
-          console.log('Works!')
-        })
+        option.addEventListener(
+          'click',
+          this.sendUserClickData.bind(View, option)
+        )
       })
     })
   }
@@ -57,11 +59,15 @@ export class View {
       boxTarget.style.left = e.pageX - (boxTargetWidth / 2) + 'px'
       boxTarget.style.top = e.pageY - (boxTargetHeight / 2) + 'px'
 
-      /* Sending the coordinates of the click to the Controller */
-      PubSub.publish('background_clicked', {
+      /* Saving the coordinates of the click to use later */
+      this.currentClickCoordinates = {
         userX: e.offsetX,
         userY: e.offsetY
-      })
+      }
+    } else {
+      /* Deleting the current coordinates once the player clicks
+        outside of the menu */
+      this.currentClickCoordinates = {}
     }
   }
 
@@ -130,5 +136,17 @@ export class View {
     checkboxes.forEach(checkbox => {
       checkbox.checked = false
     })
+  }
+
+  sendUserClickData (eventTarget) {
+    const characterNameLowerCase = eventTarget.textContent.toLowerCase()
+
+    const userData = Object.assign(this.currentClickCoordinates, {
+      nameChosen: characterNameLowerCase
+    })
+
+    /* Sending the coordinates of the click and the character name
+    that the player has chosen in the menu to the Controller */
+    PubSub.publish('user_clicked', userData)
   }
 }

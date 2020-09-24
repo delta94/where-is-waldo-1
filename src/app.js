@@ -35,8 +35,9 @@ class Controller {
 
     /* Checking if the the coordinates of the click are correct.
       If so, then updating game progress */
-    PubSub.subscribe('background_clicked', (msg, userCoordinates) => {
-      const characterFound = this.model.checkIfCharacterFound(userCoordinates)
+    PubSub.subscribe('user_clicked', (msg, { userX, userY, nameChosen }) => {
+      const characterFound =
+        this.model.checkIfCharacterFound(userX, userY, nameChosen)
 
       if (characterFound) {
         this.model.updateGameProgressData(characterFound.characterName)

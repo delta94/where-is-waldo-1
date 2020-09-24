@@ -42,12 +42,11 @@ export class Model {
     }
   }
 
-  checkIfCharacterFound (userCoordinates) {
-    const { userX, userY } = userCoordinates
-
+  checkIfCharacterFound (userX, userY, nameChosen) {
     return this.coordinatesArray.find(item => {
       if (userY > item.yMin && userY < item.yMax &&
-          userX > item.xMin && userX < item.xMax) {
+          userX > item.xMin && userX < item.xMax &&
+          nameChosen === item.characterName) {
         console.log(`Found ${item.characterName}!`)
         return item
       } else {
