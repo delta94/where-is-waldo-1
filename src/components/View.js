@@ -116,4 +116,11 @@ export class View {
       ])
     }
   }
+
+  updateGameProgressDOM (characterName) {
+    const characterCheckbox =
+      document.getElementById(`checkbox-${characterName}`)
+
+    characterCheckbox.checked = true
+  }
 }
