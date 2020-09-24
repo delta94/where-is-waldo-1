@@ -16,6 +16,7 @@ body {
   height: 70px;
 
   background-color: white;
+  z-index: 1;
   outline: 1px solid;
 }
 .progress-item {
@@ -31,7 +32,16 @@ body {
   padding: 0 5px;
 }
 
+#game-field {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+}
+
 #img-background {
+  position: relative;
+
   margin-top: 30px;
 }
 

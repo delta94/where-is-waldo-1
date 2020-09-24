@@ -39,7 +39,7 @@ export class View {
   }
 
   placeBoxTarget (e) {
-    const rootElement = document.getElementById('app')
+    const rootElement = document.getElementById('game-field')
 
     /* Removing the element when clicked outside of it */
     this.isBoxTargetClicked = !this.isBoxTargetClicked
@@ -50,14 +50,12 @@ export class View {
 
     if (this.isBoxTargetClicked) {
       const boxTarget = createElement('div', null, 'box-target', rootElement)
-      const boxTargetHeight =
-        convertToNumberFromCSS(window.getComputedStyle(boxTarget).height)
       const boxTargetWidth =
         convertToNumberFromCSS(window.getComputedStyle(boxTarget).width)
 
       /* Placing boxTarget on the coordinates of the user's click */
-      boxTarget.style.left = e.pageX - (boxTargetWidth / 2) + 'px'
-      boxTarget.style.top = e.pageY - (boxTargetHeight / 2) + 'px'
+      boxTarget.style.left = e.offsetX - (boxTargetWidth / 2) + 'px'
+      boxTarget.style.top = e.offsetY + 'px'
 
       /* Saving the coordinates of the click to use later */
       this.currentClickCoordinates = {
@@ -72,7 +70,7 @@ export class View {
   }
 
   displaySearchMenu (e) {
-    const rootElement = document.getElementById('app')
+    const rootElement = document.getElementById('game-field')
 
     /* Removing the element when clicked outside of it */
     this.isMenuSearchClicked = !this.isMenuSearchClicked
@@ -111,8 +109,8 @@ export class View {
       optionWizard.textContent = 'Wizard'
 
       /* Placing menuSearchContainer on the coordinates of the user's click */
-      menuSearchContainer.style.left = e.pageX + 40 + 'px'
-      menuSearchContainer.style.top = e.pageY - 15 + 'px'
+      menuSearchContainer.style.left = e.offsetX + 40 + 'px'
+      menuSearchContainer.style.top = e.offsetY + 15 + 'px'
 
       /* Notifying this.initListeners() function so that
         it can create event listeners for the options */
@@ -151,7 +149,7 @@ export class View {
   }
 
   markCharacterFound () {
-    const rootElement = document.getElementById('app')
+    const rootElement = document.getElementById('game-field')
     const boxTarget = document.getElementById('box-target')
 
     if (boxTarget) {
