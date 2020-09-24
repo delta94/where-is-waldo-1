@@ -11,6 +11,7 @@ export class View {
     this.isMenuSearchClicked = false
 
     this.initListeners()
+    this.resetGameDOM()
   }
 
   initListeners () {
@@ -122,5 +123,12 @@ export class View {
       document.getElementById(`checkbox-${characterName}`)
 
     characterCheckbox.checked = true
+  }
+
+  resetGameDOM () {
+    const checkboxes = document.querySelectorAll('#header-progress input')
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = false
+    })
   }
 }
