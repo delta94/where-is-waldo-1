@@ -42,6 +42,7 @@ class Controller {
       if (characterFound) {
         this.model.updateGameProgressData(characterFound.characterName)
         this.view.updateGameProgressDOM(characterFound.characterName)
+        this.view.markCharacterFound()
       }
     })
   }

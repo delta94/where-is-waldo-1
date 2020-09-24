@@ -149,4 +149,21 @@ export class View {
     that the player has chosen in the menu to the Controller */
     PubSub.publish('user_clicked', userData)
   }
+
+  markCharacterFound () {
+    const rootElement = document.getElementById('app')
+    const boxTarget = document.getElementById('box-target')
+
+    if (boxTarget) {
+      const mark = boxTarget.cloneNode(true)
+
+      mark.removeAttribute('id')
+      mark.classList.add('mark')
+
+      rootElement.append(mark)
+    } else {
+      throw new Error(`(When marking the found character):
+                        The boxTarget is not found.`)
+    }
+  }
 }
