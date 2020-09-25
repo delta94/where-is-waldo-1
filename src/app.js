@@ -53,7 +53,7 @@ class Controller {
 
     /* Initializing Game Over */
     PubSub.subscribe('all_characters_found', () => {
-      console.log('Congratulations!')
+      this.view.initializeGameOverDOM()
     })
   }
 

@@ -209,4 +209,9 @@ export class View {
       if (messageNotFound) messageNotFound.remove()
     }, 1700)
   }
+
+  initializeGameOverDOM () {
+    const messageEndgame = document.getElementById('message-endgame')
+    messageEndgame.style.visibility = 'visible'
+  }
 }
