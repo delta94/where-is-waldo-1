@@ -51,6 +51,14 @@ export class View {
       messageEndgameInput.value = ''
       messageEndgame.style.visibility = 'hidden'
     })
+
+    /* Closing the notification of a successful username upload */
+    const messageNameAdded = document.getElementById('message-name-added')
+    const messageNameAddedButtonClose = messageNameAdded.querySelector('a')
+
+    messageNameAddedButtonClose.addEventListener('click', () => {
+      messageNameAdded.style.visibility = 'hidden'
+    })
   }
 
   loadBackgroundImage (URL) {
@@ -218,6 +226,15 @@ export class View {
     setTimeout(() => {
       if (messageNotFound) messageNotFound.remove()
     }, 1700)
+  }
+
+  showMessageSentSuccessfully () {
+    const messageNameAdded = document.getElementById('message-name-added')
+    messageNameAdded.style.visibility = 'visible'
+
+    setTimeout(() => {
+      messageNameAdded.style.visibility = 'hidden'
+    }, 4000)
   }
 
   initializeGameOverDOM () {

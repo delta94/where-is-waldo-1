@@ -57,6 +57,11 @@ export class Model {
   sendUserNameToServerLeaderboard (userName) {
     const leaderboard = firebase.firestore().collection('leaderboard')
     leaderboard.add({ userName })
+      .then(() => {
+        /* Notifying the Controller if the name has been successfully sent
+          to the server */
+        PubSub.publish('user_name_sent_successfully')
+      })
       .catch(error => {
         console.log('(When sending the user name to the server)' + error)
       })

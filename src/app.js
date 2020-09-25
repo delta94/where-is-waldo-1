@@ -60,6 +60,12 @@ class Controller {
     PubSub.subscribe('user_entered_name', (msg, userInput) => {
       this.model.sendUserNameToServerLeaderboard(userInput)
     })
+
+    /* Notifying the user that their name has been successfully added
+      to the leaderboard */
+    PubSub.subscribe('user_name_sent_successfully', () => {
+      this.view.showMessageSentSuccessfully()
+    })
   }
 
   initServerData () {

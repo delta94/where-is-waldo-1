@@ -212,3 +212,33 @@ body {
 
   background-color: white;
 }
+
+/* Notification of a successful name upload
+  to the server */
+#message-name-added {
+  position: absolute;
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 400px;
+
+  font-size: 18px;
+  text-align: center;
+
+  background-color: pink;
+  border: 3px solid;
+  border-radius: 3px;
+
+  visibility: hidden;
+}
+#message-name-added a {
+  align-self: flex-end;
+  padding: 0 4px;
+
+  font-size: 20px;
+}
+#message-name-added p {
+  padding: 0 4px;
+}
