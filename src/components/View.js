@@ -34,6 +34,13 @@ export class View {
         })
       })
     })
+
+    /* Closing the endgame pop-up window */
+    const messageEndgame = document.getElementById('message-endgame')
+    const messageEndgameButtonClose = messageEndgame.querySelector('a')
+    messageEndgameButtonClose.addEventListener('click', () => {
+      messageEndgame.style.visibility = 'hidden'
+    })
   }
 
   loadBackgroundImage (URL) {
