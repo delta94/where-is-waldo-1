@@ -112,7 +112,7 @@ body {
 }
 #message-btn-close {
   align-self: flex-end;
-  margin: 0 4px;
+  padding: 0 4px;
 }
 #message-not-found p {
   margin: 0;
