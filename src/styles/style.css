@@ -7,6 +7,7 @@ body {
   justify-content: center;
 }
 
+/* Header */
 #header-progress {
   display: flex;
   justify-content: center;
@@ -32,6 +33,7 @@ body {
   padding: 0 5px;
 }
 
+/* Game field */
 #game-field {
   position: relative;
 
@@ -39,12 +41,14 @@ body {
   justify-content: center;
 }
 
+/* Background image */
 #img-background {
   position: relative;
 
   margin-top: 30px;
 }
 
+/* Target box */
 #box-target {
   position: absolute;
 
@@ -54,6 +58,7 @@ body {
   border: 5px solid;
 }
 
+/* Search menu container */
 #menu-search-container {
   position: absolute;
 
@@ -85,6 +90,7 @@ body {
   background-color: yellow;
 }
 
+/* Found-a-character mark */
 .mark {
   position: absolute;
 
@@ -94,6 +100,7 @@ body {
   border: 5px solid blue;
 }
 
+/* Not-found message */
 #message-not-found {
   position: absolute;
 
