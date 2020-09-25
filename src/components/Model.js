@@ -54,6 +54,14 @@ export class Model {
     }
   }
 
+  sendUserNameToServerLeaderboard (userName) {
+    const leaderboard = firebase.firestore().collection('leaderboard')
+    leaderboard.add({ userName })
+      .catch(error => {
+        console.log('(When sending the user name to the server)' + error)
+      })
+  }
+
   checkIfCharacterFound (userX, userY, nameChosen) {
     return this.coordinatesArray.find(item => {
       if (userY > item.yMin && userY < item.yMax &&

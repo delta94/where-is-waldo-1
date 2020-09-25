@@ -41,6 +41,16 @@ export class View {
     messageEndgameButtonClose.addEventListener('click', () => {
       messageEndgame.style.visibility = 'hidden'
     })
+
+    /* Adding the user's input to the leaderboard */
+    const messageEndgameButtonSubmit = messageEndgame.querySelector('button')
+    const messageEndgameInput = messageEndgame.querySelector('input')
+
+    messageEndgameButtonSubmit.addEventListener('click', () => {
+      PubSub.publish('user_entered_name', messageEndgameInput.value)
+      messageEndgameInput.value = ''
+      messageEndgame.style.visibility = 'hidden'
+    })
   }
 
   loadBackgroundImage (URL) {

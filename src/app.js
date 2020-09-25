@@ -55,6 +55,11 @@ class Controller {
     PubSub.subscribe('all_characters_found', () => {
       this.view.initializeGameOverDOM()
     })
+
+    /* Passing the user's name to the Model to send it to the server */
+    PubSub.subscribe('user_entered_name', (msg, userInput) => {
+      this.model.sendUserNameToServerLeaderboard(userInput)
+    })
   }
 
   initServerData () {
