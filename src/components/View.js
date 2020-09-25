@@ -205,7 +205,7 @@ export class View {
     this.isMenuSearchClicked = false
   }
 
-  showMessageNotFound (x, y) {
+  displayMessageNotFound (x, y) {
     const gameField = document.getElementById('game-field')
     const templateMessageNotFound =
       document.getElementById('message-not-found')
@@ -228,7 +228,7 @@ export class View {
     }, 1700)
   }
 
-  showMessageSentSuccessfully () {
+  displayMessageSentSuccessfully () {
     const messageNameAdded = document.getElementById('message-name-added')
     messageNameAdded.style.visibility = 'visible'
 

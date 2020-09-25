@@ -44,7 +44,7 @@ class Controller {
         this.view.updateGameProgressDOM(characterFound.characterName)
         this.view.markCharacterFound()
       } else {
-        this.view.showMessageNotFound(userX, userY)
+        this.view.displayMessageNotFound(userX, userY)
       }
 
       this.view.removeBoxTarget()
@@ -64,7 +64,7 @@ class Controller {
     /* Notifying the user that their name has been successfully added
       to the leaderboard */
     PubSub.subscribe('user_name_sent_successfully', () => {
-      this.view.showMessageSentSuccessfully()
+      this.view.displayMessageSentSuccessfully()
     })
   }
 
