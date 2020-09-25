@@ -158,10 +158,16 @@ export class View {
   }
 
   resetGameDOM () {
+    /* Resetting checkboxes in the header */
     const checkboxes = document.querySelectorAll('#header-progress input')
     checkboxes.forEach(checkbox => {
       checkbox.checked = false
     })
+
+    /* Resetting the input when prompting for the user's name */
+    const messageEndgameInput =
+      document.querySelector('#message-endgame-body input')
+    messageEndgameInput.value = ''
   }
 
   sendUserClickData (eventTarget) {
