@@ -37,15 +37,19 @@ export class View {
 
     /* Closing the endgame pop-up window */
     const messageEndgame = document.getElementById('message-endgame')
+    const messageEndgameInput = messageEndgame.querySelector('input')
     const messageEndgameButtonClose = messageEndgame.querySelector('a')
     messageEndgameButtonClose.addEventListener('click', () => {
       messageEndgame.style.visibility = 'hidden'
     })
 
+    /* Erasing the input value when the user closes the endgame window */
+    messageEndgameButtonClose.addEventListener('click', () => {
+      messageEndgameInput.value = ''
+    })
+
     /* Adding the user's input to the leaderboard */
     const messageEndgameButtonSubmit = messageEndgame.querySelector('button')
-    const messageEndgameInput = messageEndgame.querySelector('input')
-
     messageEndgameButtonSubmit.addEventListener('click', () => {
       PubSub.publish('user_entered_name', messageEndgameInput.value)
       messageEndgameInput.value = ''
