@@ -11,6 +11,18 @@ export class Model {
       odlaw: false,
       wizard: false
     }
+
+    /* Checking if the player has found all characters
+      each time they find one */
+    PubSub.subscribe('game_progress_data_updated', () => {
+      const areAllFound =
+        Object.entries(this.gameProgress).every(([key, value]) => {
+          return value === true
+        })
+
+      /* Notifying the Controller when all characters have been found */
+      if (areAllFound) PubSub.publish('all_characters_found')
+    })
   }
 
   async getBackgroundImageFromServer () {
@@ -57,5 +69,6 @@ export class Model {
 
   updateGameProgressData (characterName) {
     this.gameProgress[characterName] = true
+    PubSub.publish('game_progress_data_updated')
   }
 }

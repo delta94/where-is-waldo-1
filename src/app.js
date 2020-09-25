@@ -50,6 +50,11 @@ class Controller {
       this.view.removeBoxTarget()
       this.view.removeSearchMenu()
     })
+
+    /* Initializing Game Over */
+    PubSub.subscribe('all_characters_found', () => {
+      console.log('Congratulations!')
+    })
   }
 
   initServerData () {
