@@ -18,17 +18,20 @@ export class View {
   initListeners () {
     /* The user clicks on the background */
     const imgBackground = document.getElementById('img-background')
-    imgBackground.addEventListener('click', this.placeBoxTarget.bind(View))
-    imgBackground.addEventListener('click', this.displaySearchMenu.bind(View))
+    imgBackground.addEventListener('click', (e) => {
+      this.placeBoxTarget(e)
+    })
+    imgBackground.addEventListener('click', (e) => {
+      this.displaySearchMenu(e)
+    })
 
     /* Adding listeners to search menu options
       WHEN search menu has been created */
     PubSub.subscribe('search_menu_created', (msg, options) => {
       options.forEach(option => {
-        option.addEventListener(
-          'click',
-          this.sendUserClickData.bind(View, option)
-        )
+        option.addEventListener('click', () => {
+          this.sendUserClickData(option)
+        })
       })
     })
   }
@@ -163,5 +166,40 @@ export class View {
       throw new Error(`(When marking the found character):
                         The boxTarget is not found.`)
     }
+  }
+
+  removeBoxTarget () {
+    const boxTarget = document.getElementById('box-target')
+    boxTarget.remove()
+    this.isBoxTargetClicked = false
+  }
+
+  removeSearchMenu () {
+    const menuSearch = document.getElementById('menu-search-container')
+    menuSearch.remove()
+    this.isMenuSearchClicked = false
+  }
+
+  showMessageNotFound (x, y) {
+    const gameField = document.getElementById('game-field')
+    const templateMessageNotFound =
+      document.getElementById('message-not-found')
+
+    const messageNotFound = templateMessageNotFound.cloneNode(true)
+
+    messageNotFound.style.top = y + 'px'
+    messageNotFound.style.left = x + 'px'
+    messageNotFound.style.visibility = 'visible'
+    gameField.append(messageNotFound)
+
+    /* The close button */
+    const closeButton = messageNotFound.querySelector('#message-btn-close')
+    closeButton.addEventListener('click', () => {
+      messageNotFound.remove()
+    })
+
+    setTimeout(() => {
+      if (messageNotFound) messageNotFound.remove()
+    }, 1700)
   }
 }

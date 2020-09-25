@@ -34,7 +34,7 @@ class Controller {
     })
 
     /* Checking if the the coordinates of the click are correct.
-      If so, then updating game progress */
+      If so, then updating the game */
     PubSub.subscribe('user_clicked', (msg, { userX, userY, nameChosen }) => {
       const characterFound =
         this.model.checkIfCharacterFound(userX, userY, nameChosen)
@@ -43,7 +43,12 @@ class Controller {
         this.model.updateGameProgressData(characterFound.characterName)
         this.view.updateGameProgressDOM(characterFound.characterName)
         this.view.markCharacterFound()
+      } else {
+        this.view.showMessageNotFound(userX, userY)
       }
+
+      this.view.removeBoxTarget()
+      this.view.removeSearchMenu()
     })
   }
 
