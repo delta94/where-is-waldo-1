@@ -96,7 +96,6 @@ body {
 
 #message-not-found {
   position: absolute;
-  z-index: 2;
 
   display: flex;
   flex-direction: column;
@@ -114,16 +113,6 @@ body {
 #message-btn-close {
   align-self: flex-end;
   margin: 0 4px;
-
-  text-decoration: none;
-  font-size: 19px;
-  font-weight: bold;
-  color: black;
-
-  cursor: pointer;
-}
-#message-btn-close:hover {
-  color: red;
 }
 #message-not-found p {
   margin: 0;
@@ -131,4 +120,88 @@ body {
 
   font-size: 18px;
   text-align: center;
+}
+
+/* Close button */
+.btn-close {
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: bold;
+  color: black;
+
+  cursor: pointer;
+}
+.btn-close:hover {
+  color: red;
+}
+
+/* Endgame message */
+#message-endgame {
+  position: absolute;
+
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 600px;
+
+  font-size: 18px;
+
+  background-color: pink;
+  border: 4px solid;
+  border-radius: 3px;
+
+  visibility: hidden;
+}
+#message-endgame-header {
+  margin: 0 0 10px 0;
+  font-size: 27px;
+}
+#message-endgame a {
+  align-self: flex-end;
+  margin: 0 5px;
+  padding: 4px;
+
+  font-size: 22px;
+}
+#message-endgame-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+#message-endgame-body p {
+  font-size: 20px;
+}
+#message-endgame-body label {
+  margin: 0 5px 10px 0;
+}
+#message-endgame-body input {
+  width: 215px;
+  height: 40px;
+  margin: 5px 0 15px;
+  padding-left: 7px;
+
+  font-size: 18px;
+
+  border: none;
+}
+#message-endgame-body button {
+  width: 120px;
+  height: 30px;
+  margin-bottom: 10px;
+
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+
+  background-color: red;
+  border: none;
+}
+#message-endgame-body button:hover {
+  color: black;
+
+  background-color: white;
 }
