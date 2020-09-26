@@ -3,10 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/app.js',
+  entry: {
+    app: './src/app.js',
+    leaderboard: './src/components/leaderboard/leaderboard.js'
+  },
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/' // Might cause an error in case of code splitting
   },
@@ -39,6 +42,14 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({ template: 'src/index.html' })
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      chunks: ['app']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/components/leaderboard/leaderboard.html',
+      filename: 'leaderboard.html',
+      chunks: ['leaderboard']
+    })
   ]
 }
