@@ -35,16 +35,13 @@ export class View {
       })
     })
 
-    /* Closing the endgame pop-up window */
+    /* Closing the endgame pop-up window and removing the input value */
     const messageEndgame = document.getElementById('message-endgame')
     const messageEndgameInput = messageEndgame.querySelector('input')
     const messageEndgameButtonClose = messageEndgame.querySelector('a')
+
     messageEndgameButtonClose.addEventListener('click', () => {
       messageEndgame.style.visibility = 'hidden'
-    })
-
-    /* Erasing the input value when the user closes the endgame window */
-    messageEndgameButtonClose.addEventListener('click', () => {
       messageEndgameInput.value = ''
     })
 
@@ -52,8 +49,8 @@ export class View {
     const messageEndgameButtonSubmit = messageEndgame.querySelector('button')
     messageEndgameButtonSubmit.addEventListener('click', () => {
       PubSub.publish('user_entered_name', messageEndgameInput.value)
-      messageEndgameInput.value = ''
       messageEndgame.style.visibility = 'hidden'
+      messageEndgameInput.value = ''
     })
 
     /* Closing the notification of a successful username upload */
