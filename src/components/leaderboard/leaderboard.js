@@ -24,7 +24,9 @@ class Leaderboard {
 
     const response = await collectionLeaderboard.get()
     response.forEach(responsePiece => {
-      this.dataLeaderboard.push(responsePiece.data())
+      if (this.dataLeaderboard.length <= 20) {
+        this.dataLeaderboard.push(responsePiece.data())
+      }
     })
 
     PubSub.publish('data_leaderboard_loaded')
