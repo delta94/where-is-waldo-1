@@ -100,19 +100,26 @@ body {
   border: 5px solid blue;
 }
 
-/* Not-found message */
-#message-not-found {
+/* Messages */
+.message {
   position: absolute;
 
   display: flex;
   flex-direction: column;
 
-  width: 120px;
-  height: 70px;
+  font-size: 18px;
+  text-align: center;
 
   background-color: pink;
   border: 3px solid;
   border-radius: 3px;
+}
+
+/* Not-found message */
+#message-not-found {
+  width: 120px;
+  height: 70px;
+
   opacity: .8;
 
   visibility: hidden;
@@ -124,9 +131,6 @@ body {
 #message-not-found p {
   margin: 0;
   padding: 3px;
-
-  font-size: 18px;
-  text-align: center;
 }
 
 /* Close button */
@@ -144,20 +148,11 @@ body {
 
 /* Endgame message */
 #message-endgame {
-  position: absolute;
-
   align-self: center;
-  display: flex;
-  flex-direction: column;
+
   align-items: center;
 
   width: 600px;
-
-  font-size: 18px;
-
-  background-color: pink;
-  border: 4px solid;
-  border-radius: 3px;
 
   visibility: hidden;
 }
@@ -176,8 +171,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  text-align: center;
 }
 #message-endgame-body p {
   font-size: 20px;
@@ -216,20 +209,9 @@ body {
 /* Notification of a successful name upload
   to the server */
 #message-name-added {
-  position: absolute;
   align-self: center;
 
-  display: flex;
-  flex-direction: column;
-
   width: 400px;
-
-  font-size: 18px;
-  text-align: center;
-
-  background-color: pink;
-  border: 3px solid;
-  border-radius: 3px;
 
   visibility: hidden;
 }
