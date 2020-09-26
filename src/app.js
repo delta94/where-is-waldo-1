@@ -54,6 +54,7 @@ class Controller {
     /* Initializing Game Over */
     PubSub.subscribe('all_characters_found', () => {
       this.view.initializeGameOverDOM()
+      this.view.displayCover()
     })
 
     /* Passing the user's name to the Model to send it to the server */

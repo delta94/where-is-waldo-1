@@ -224,3 +224,15 @@ body {
 #message-name-added p {
   padding: 0 4px;
 }
+
+/* A cover for the game field that stops the player
+  from clicking on the background */
+#cover {
+  position: absolute;
+
+  background-color: black;
+  opacity: .1;
+  outline: 1px solid;
+
+  visibility: hidden;
+}

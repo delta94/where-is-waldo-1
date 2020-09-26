@@ -248,4 +248,18 @@ export class View {
     const messageEndgame = document.getElementById('message-endgame')
     messageEndgame.style.visibility = 'visible'
   }
+
+  /* Displaying an element that stops the player from clicking
+    on the background image */
+  displayCover () {
+    const imgBackground = document.getElementById('img-background')
+    const cover = document.getElementById('cover')
+
+    cover.style.cssText = `
+      top: ${imgBackground.offsetTop}px;
+      width: ${imgBackground.width}px;
+      height: ${imgBackground.height}px;
+      visibility: visible;
+    `
+  }
 }
