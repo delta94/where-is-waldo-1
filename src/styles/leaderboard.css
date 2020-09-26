@@ -74,7 +74,7 @@ header h1 {
   border: 1px transparent;
   border-radius: 5px;
 }
-#list-players li {
+.list-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,4 +90,7 @@ header h1 {
 }
 #list-players li div {
   margin: 3px 0;
+}
+#list-template {
+  display: none;
 }
