@@ -49,7 +49,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/components/leaderboard/leaderboard.html',
       filename: 'leaderboard.html',
-      chunks: ['leaderboard']
+      chunks: ['leaderboard'],
+      inject: false
     })
   ]
 }
