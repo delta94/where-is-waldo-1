@@ -1,4 +1,4 @@
-import { convertToNumberFromCSS } from './helperFunctions'
+import { convertToNumberFromCSS } from '../utilities/helperFunctions'
 
 test('Given a CSS property the function returns a number', () => {
   expect(convertToNumberFromCSS('50px')).toEqual(50)

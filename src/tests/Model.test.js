@@ -1,4 +1,4 @@
-import { Model } from './Model'
+import { Model } from '../components/Model'
 
 test('Given a character name change gameProgress object', () => {
   const model = new Model()
