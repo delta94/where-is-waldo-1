@@ -40,7 +40,8 @@ class Leaderboard {
       const listEntry = listEntryTemplate.cloneNode(true)
       listEntry.removeAttribute('id')
       listEntry.firstElementChild.textContent = `Player ${entry.userName}`
-      listEntry.lastElementChild.textContent = 'In test seconds'
+      listEntry.lastElementChild.textContent =
+        `Has finished in ${entry.time} seconds`
       listPlayers.append(listEntry)
     })
   }
