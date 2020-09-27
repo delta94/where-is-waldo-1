@@ -44,6 +44,8 @@ class Controller {
 
     /* Initializing Game Over */
     PubSub.subscribe('all_characters_found', () => {
+      this.model.sendTimestampToServer('end')
+
       this.view.initializeGameOverDOM()
       this.view.displayCover()
     })
@@ -63,6 +65,7 @@ class Controller {
   initServerData () {
     this.model.getBackgroundImageFromServer()
     this.model.getCoordinatesFromServer()
+    this.model.sendTimestampToServer('start')
   }
 }
 

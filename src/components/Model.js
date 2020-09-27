@@ -5,6 +5,8 @@ import PubSub from 'pubsub-js'
 export class Model {
   constructor () {
     this.coordinatesArray = []
+    this.timestampSeconds = {}
+    this.secondsTakenToBeat = 0
 
     this.gameProgress = {
       waldo: false,
@@ -22,6 +24,13 @@ export class Model {
 
       /* Notifying the Controller when all characters have been found */
       if (areAllFound) PubSub.publish('all_characters_found')
+    })
+
+    /* Calculating the seconds it has took for the player
+      to find all characters and notifying the Controller about it */
+    PubSub.subscribe('timestamps_loaded', () => {
+      this.secondsTakenToBeat =
+        this.timestampSeconds.end - this.timestampSeconds.start
     })
   }
 
@@ -52,6 +61,41 @@ export class Model {
     } catch (error) {
       console.log('(When getting the coordinates): ' + error)
     }
+  }
+
+  async getTimestampFromServer (documentName) {
+    try {
+      const collectionTimestamp = firebase.firestore().collection('timestamp')
+
+      const response = await collectionTimestamp.doc(documentName).get()
+      const timestampObject = response.data()
+
+      /* Saving the received timestamp in the object */
+      this.timestampSeconds[documentName] =
+        timestampObject.currentTimestamp.seconds
+
+      /* When getting the second(last) timestamp */
+      if (documentName === 'end') {
+        PubSub.publish('timestamps_loaded')
+      }
+    } catch (error) {
+      console.log('(When getting a timestamp): ' + error)
+    }
+  }
+
+  sendTimestampToServer (documentName) {
+    const collectionTimestamp = firebase.firestore().collection('timestamp')
+
+    collectionTimestamp.doc(documentName).set({
+      currentTimestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+      .then(() => {
+        /* Saving the timestamp in the Model right away */
+        this.getTimestampFromServer(documentName)
+      })
+      .catch(error => {
+        console.log('(When sending a timestamp to the server):' + error)
+      })
   }
 
   sendUserNameToServerLeaderboard (userName) {
