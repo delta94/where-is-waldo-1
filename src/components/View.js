@@ -249,6 +249,13 @@ export class View {
     messageEndgame.style.visibility = 'visible'
   }
 
+  displayUserTime (seconds) {
+    const textCongratulations =
+      document.querySelector('#message-endgame-body p')
+    textCongratulations.innerHTML =
+      `You have found all characters in <b>${seconds} seconds</b>.`
+  }
+
   /* Displaying an element that stops the player from clicking
     on the background image */
   displayCover () {

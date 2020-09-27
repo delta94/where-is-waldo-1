@@ -31,6 +31,8 @@ export class Model {
     PubSub.subscribe('timestamps_loaded', () => {
       this.secondsTakenToBeat =
         this.timestampSeconds.end - this.timestampSeconds.start
+
+      PubSub.publish('seconds_to_beat_calculated', this.secondsTakenToBeat)
     })
   }
 

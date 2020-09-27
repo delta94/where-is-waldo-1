@@ -50,6 +50,12 @@ class Controller {
       this.view.displayCover()
     })
 
+    /* Displaying the seconds it has taken for the player to beat the game
+      in the endgame window */
+    PubSub.subscribe('seconds_to_beat_calculated', (msg, seconds) => {
+      this.view.displayUserTime(seconds)
+    })
+
     /* Passing the user's name to the Model to send it to the server */
     PubSub.subscribe('user_entered_name', (msg, userInput) => {
       this.model.sendUserNameToServerLeaderboard(userInput)
