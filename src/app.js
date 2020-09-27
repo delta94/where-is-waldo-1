@@ -15,6 +15,7 @@ class Controller {
 
     this.initListeners()
     this.initServerData()
+    this.view.updateStopWatchDOM()
   }
 
   initListeners () {
@@ -68,10 +69,10 @@ class Controller {
     })
   }
 
-  initServerData () {
+  async initServerData () {
     this.model.getBackgroundImageFromServer()
     this.model.getCoordinatesFromServer()
-    this.model.sendTimestampToServer('start')
+    await this.model.sendTimestampToServer('start')
   }
 }
 

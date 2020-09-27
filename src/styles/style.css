@@ -8,6 +8,25 @@ body {
 }
 
 /* Header */
+#stop-watch {
+  position: absolute;
+  left: 0;
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+
+  height: 50px;
+  margin-left: 20px;
+  padding: 0 10px;
+
+  font-size: 20px;
+
+  background-color: lightgoldenrodyellow;
+  border: 1px transparent;
+  border-radius: 3px;
+  /* outline: 1px solid; */
+}
 #header-progress {
   display: flex;
   justify-content: center;

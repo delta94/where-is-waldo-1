@@ -85,7 +85,7 @@ export class Model {
     }
   }
 
-  sendTimestampToServer (documentName) {
+  async sendTimestampToServer (documentName) {
     const collectionTimestamp = firebase.firestore().collection('timestamp')
 
     collectionTimestamp.doc(documentName).set({

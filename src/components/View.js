@@ -249,6 +249,19 @@ export class View {
     messageEndgame.style.visibility = 'visible'
   }
 
+  updateStopWatchDOM () {
+    const stopWatch = document.getElementById('stop-watch')
+    let initialTime = 0
+    const interval = setInterval(() => {
+      stopWatch.textContent = `Passed: ${initialTime++} seconds (approx.)`
+    }, 1000)
+
+    /* Stopping the stopwatch when all characters have been found */
+    PubSub.subscribe('all_characters_found', () => {
+      clearInterval(interval)
+    })
+  }
+
   displayUserTime (seconds) {
     const textCongratulations =
       document.querySelector('#message-endgame-body p')
