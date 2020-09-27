@@ -100,9 +100,9 @@ export class Model {
       })
   }
 
-  sendUserNameToServerLeaderboard (userName) {
+  sendUserEntryToServerLeaderboard (userName, time) {
     const leaderboard = firebase.firestore().collection('leaderboard')
-    leaderboard.add({ userName })
+    leaderboard.add({ userName, time })
       .then(() => {
         /* Notifying the Controller if the name has been successfully sent
           to the server */

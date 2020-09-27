@@ -57,9 +57,13 @@ class Controller {
       this.view.displayUserTime(seconds)
     })
 
-    /* Passing the user's name to the Model to send it to the server */
+    /* Passing the user's name and time to the Model
+      to send it to the server */
     PubSub.subscribe('user_entered_name', (msg, userInput) => {
-      this.model.sendUserNameToServerLeaderboard(userInput)
+      this.model.sendUserEntryToServerLeaderboard(
+        userInput,
+        this.model.secondsTakenToBeat
+      )
     })
 
     /* Notifying the user that their name has been successfully added

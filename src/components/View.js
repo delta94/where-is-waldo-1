@@ -45,7 +45,7 @@ export class View {
       messageEndgameInput.value = ''
     })
 
-    /* Adding the user's input to the leaderboard */
+    /* Adding the user's input (name only) to the leaderboard */
     const messageEndgameButtonSubmit = messageEndgame.querySelector('button')
     messageEndgameButtonSubmit.addEventListener('click', () => {
       PubSub.publish('user_entered_name', messageEndgameInput.value)
