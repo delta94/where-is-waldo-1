@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/firebase-storage'
 import PubSub from 'pubsub-js'
 
 export class Model {
@@ -38,13 +39,12 @@ export class Model {
 
   async getBackgroundImageFromServer () {
     try {
-      const bgImages = firebase.firestore().collection('images')
-
-      const response = await bgImages.doc('background-1').get()
-      const responseObject = response.data()
+      const storage = firebase.storage()
+      const imageLevel1 = storage.ref('images/background/level-1.jpg')
+      const imageURL = await imageLevel1.getDownloadURL()
 
       /* Sending it to the Controller */
-      PubSub.publish('background_loaded', responseObject.URL)
+      PubSub.publish('background_loaded', imageURL)
     } catch (error) {
       console.log('(When getting the background image): ' + error)
     }
