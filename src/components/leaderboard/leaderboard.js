@@ -21,12 +21,12 @@ class Leaderboard {
   async getLeaderboardDataFromServer () {
     const collectionLeaderboard =
       firebase.firestore().collection('leaderboard')
+        .orderBy('time')
+        .limit(20)
 
     const response = await collectionLeaderboard.get()
     response.forEach(responsePiece => {
-      if (this.dataLeaderboard.length <= 20) {
-        this.dataLeaderboard.push(responsePiece.data())
-      }
+      this.dataLeaderboard.push(responsePiece.data())
     })
 
     PubSub.publish('data_leaderboard_loaded')
