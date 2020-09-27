@@ -74,6 +74,19 @@ header h1 {
   border: 1px transparent;
   border-radius: 5px;
 }
+#header-leaderboard {
+  width: 250px;
+  margin: 8px auto;
+  padding: 5px;
+
+  font-size: 26px;
+  font-weight: normal;
+  text-align: center;
+
+  background-color: lightgoldenrodyellow;
+  border: 1px transparent;
+  border-radius: 3px;
+}
 .list-item {
   display: flex;
   flex-direction: column;
