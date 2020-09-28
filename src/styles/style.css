@@ -192,7 +192,7 @@ body {
 
   visibility: hidden;
 }
-#message-btn-close {
+#message-not-found-btn-close {
   align-self: flex-end;
   padding: 0 4px;
 }

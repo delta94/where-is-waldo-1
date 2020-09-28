@@ -49,7 +49,7 @@ export class Message {
     gameField.append(messageNotFound)
 
     /* The close button */
-    const buttonClose = messageNotFound.querySelector('#message-btn-close')
+    const buttonClose = messageNotFound.querySelector('#message-not-found-btn-close')
     buttonClose.addEventListener('click', () => {
       messageNotFound.remove()
     })
