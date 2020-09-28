@@ -189,6 +189,15 @@ export class View {
       on the background image */
     const cover = document.getElementById('cover')
     cover.style.visibility = 'hidden'
+
+    /* Hiding the endgame message */
+    const messageEndgame = document.getElementById('message-endgame')
+    messageEndgame.style.visibility = 'hidden'
+
+    /* Hiding the message about successfully adding the name
+      to the leaderboard */
+    const messageNameAdded = document.getElementById('message-name-added')
+    messageNameAdded.style.visibility = 'hidden'
   }
 
   sendUserClickData (eventTarget) {
