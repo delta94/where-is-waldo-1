@@ -172,6 +172,12 @@ export class View {
     const messageEndgameInput =
       document.querySelector('#message-endgame-body input')
     messageEndgameInput.value = ''
+
+    /* Removing marks that the user has placed */
+    const marks = document.querySelectorAll('.mark')
+    marks.forEach(mark => {
+      mark.remove()
+    })
   }
 
   sendUserClickData (eventTarget) {
