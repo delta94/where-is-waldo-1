@@ -49,7 +49,7 @@ export class View {
     const messageEndgameButtonSubmit = messageEndgame.querySelector('button')
     messageEndgameButtonSubmit.addEventListener('click', () => {
       if (messageEndgameInput.value !== '') {
-        PubSub.publish('user_entered_name', messageEndgameInput.value)
+        PubSub.publish('username_entered', messageEndgameInput.value)
       }
 
       messageEndgame.style.visibility = 'hidden'
@@ -209,7 +209,7 @@ export class View {
 
     /* Sending the coordinates of the click and the character name
     that the player has chosen in the menu to the Controller */
-    PubSub.publish('user_clicked', userData)
+    PubSub.publish('name_in_search_menu_chosen', userData)
   }
 
   markCharacterFound () {

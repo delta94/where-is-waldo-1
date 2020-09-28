@@ -26,21 +26,24 @@ class Controller {
 
     /* Checking if the the coordinates of the click are correct.
       If so, then updating the game */
-    PubSub.subscribe('user_clicked', (msg, { userX, userY, nameChosen }) => {
-      const characterFound =
-        this.model.checkIfCharacterFound(userX, userY, nameChosen)
+    PubSub.subscribe(
+      'name_in_search_menu_chosen',
+      (msg, { userX, userY, nameChosen }
+      ) => {
+        const characterFound =
+          this.model.checkIfCharacterFound(userX, userY, nameChosen)
 
-      if (characterFound) {
-        this.model.updateGameProgressData(characterFound.characterName)
-        this.view.updateGameProgressDOM(characterFound.characterName)
-        this.view.markCharacterFound()
-      } else {
-        this.view.displayMessageNotFound(userX, userY)
-      }
+        if (characterFound) {
+          this.model.updateGameProgressData(characterFound.characterName)
+          this.view.updateGameProgressDOM(characterFound.characterName)
+          this.view.markCharacterFound()
+        } else {
+          this.view.displayMessageNotFound(userX, userY)
+        }
 
-      this.view.removeBoxTarget()
-      this.view.removeSearchMenu()
-    })
+        this.view.removeBoxTarget()
+        this.view.removeSearchMenu()
+      })
 
     /* The user clicks the restart button */
     PubSub.subscribe('restart_button_clicked', () => {
@@ -63,7 +66,7 @@ class Controller {
 
     /* Passing the user's name and time to the Model
       to send it to the server */
-    PubSub.subscribe('user_entered_name', (msg, userInput) => {
+    PubSub.subscribe('username_entered', (msg, userInput) => {
       this.model.sendUserEntryToServerLeaderboard(
         userInput,
         this.model.secondsTakenToBeat
