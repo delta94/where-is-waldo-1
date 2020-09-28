@@ -43,6 +43,11 @@ class Controller {
       this.view.removeSearchMenu()
     })
 
+    /* The user clicks the restart button */
+    PubSub.subscribe('restart_button_clicked', () => {
+      this.restartGame()
+    })
+
     /* Initializing Game Over */
     PubSub.subscribe('all_characters_found', () => {
       this.model.sendTimestampToServer('end')
@@ -77,6 +82,13 @@ class Controller {
     this.model.getBackgroundImageFromServer()
     this.model.getCoordinatesFromServer()
     await this.model.sendTimestampToServer('start')
+  }
+
+  async restartGame () {
+    this.view.resetGameDOM()
+    this.model.resetGameData()
+    await this.model.sendTimestampToServer('start')
+    this.view.updateStopWatchDOM()
   }
 }
 

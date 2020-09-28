@@ -63,6 +63,12 @@ export class View {
     messageNameAddedButtonClose.addEventListener('click', () => {
       messageNameAdded.style.visibility = 'hidden'
     })
+
+    /* Restart button */
+    const buttonRestart = document.getElementById('btn-restart')
+    buttonRestart.addEventListener('click', () => {
+      PubSub.publish('restart_button_clicked')
+    })
   }
 
   loadBackgroundImage (URL) {
@@ -178,6 +184,11 @@ export class View {
     marks.forEach(mark => {
       mark.remove()
     })
+
+    /* Hiding the cover that stops the player from clicking
+      on the background image */
+    const cover = document.getElementById('cover')
+    cover.style.visibility = 'hidden'
   }
 
   sendUserClickData (eventTarget) {
@@ -267,6 +278,11 @@ export class View {
 
     /* Stopping the stopwatch when all characters have been found */
     PubSub.subscribe('all_characters_found', () => {
+      clearInterval(interval)
+    })
+
+    /* Stopping the stopwatch when the restart button has been clicked */
+    PubSub.subscribe('restart_button_clicked', () => {
       clearInterval(interval)
     })
   }
