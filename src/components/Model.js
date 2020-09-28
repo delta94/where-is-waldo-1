@@ -126,6 +126,26 @@ export class Model {
     })
   }
 
+  async checkIfRecordSet () {
+    const leaderboard = firebase.firestore().collection('leaderboard')
+    const response = await leaderboard.get()
+
+    let isRecordSet = false
+    let responseLength = 0
+
+    response.forEach(responsePiece => {
+      if (this.secondsTakenToBeat < responsePiece.data().time) {
+        isRecordSet = true
+      }
+      responseLength++
+    })
+
+    /* Adding the user to the leaderboard if there are less than 20 entries */
+    if (responseLength < 20) isRecordSet = true
+
+    return isRecordSet
+  }
+
   updateGameProgressData (characterName) {
     this.gameProgress[characterName] = true
     PubSub.publish('game_progress_data_updated')

@@ -276,19 +276,21 @@ export class View {
   displayMessageBeforeRestart () {
     const messageBeforeRestart =
       document.getElementById('message-before-restart')
+
+    let counter = 3
+
+    messageBeforeRestart.textContent = counter
     messageBeforeRestart.style.visibility = 'visible'
 
-    let counter = 2
-
     /* Counting down before resetting the game */
-    setInterval(() => {
-      messageBeforeRestart.textContent = counter
+    const interval = setInterval(() => {
       counter--
+      messageBeforeRestart.textContent = counter
 
-      if (counter < 0) {
+      if (counter < 1) {
         messageBeforeRestart.style.visibility = 'hidden'
         PubSub.publish('restart_countdown_expired')
-        clearInterval()
+        clearInterval(interval)
       }
     }, 1000)
   }
@@ -296,6 +298,22 @@ export class View {
   initializeGameOverDOM () {
     const messageEndgame = document.getElementById('message-endgame')
     messageEndgame.style.visibility = 'visible'
+  }
+
+  /* Allowing the player to add their name to the leaderboard
+      if they have found all characters in record time */
+  displaySubmitBlock () {
+    const blockSubmitToLeaderboard =
+        document.getElementById('block-submit-to-leaderboard')
+    blockSubmitToLeaderboard.style.display = 'flex'
+  }
+
+  /* NOT allowing the player to add their name to the leaderboard
+      if they have found all characters in record time */
+  hideSubmitBlock () {
+    const blockSubmitToLeaderboard =
+        document.getElementById('block-submit-to-leaderboard')
+    blockSubmitToLeaderboard.style.display = 'none'
   }
 
   displayUserTime (seconds) {
