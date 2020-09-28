@@ -72,7 +72,7 @@ body {
 }
 
 /* Header - Navigation block */
-#block-navigation {
+#block-right {
   position: absolute;
   right: 30px;
 
