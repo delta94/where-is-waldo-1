@@ -8,25 +8,58 @@ body {
 }
 
 /* Header */
-#stop-watch {
+
+/* Header - Left block */
+#block-left {
   position: absolute;
   left: 0;
-  align-self: center;
 
   display: flex;
   align-items: center;
 
+  height: 70px;
+}
+#stop-watch {
+  display: flex;
+  align-items: center;
+
   height: 50px;
-  margin-left: 20px;
+  margin-left: 18px;
   padding: 0 10px;
 
-  font-size: 20px;
+  font-size: 18px;
 
   background-color: lightgoldenrodyellow;
   border: 1px transparent;
   border-radius: 3px;
-  /* outline: 1px solid; */
 }
+
+/* Buttons */
+.btn {
+  border: 1px transparent;
+  border-radius: 3px;
+}
+.btn:hover {
+  cursor: pointer;
+}
+
+/* Restart button */
+#btn-restart {
+  width: 100px;
+  height: 30px;
+  margin: 0 12px;
+
+  font-size: 20px;
+
+  background-color: pink;
+}
+#btn-restart:hover {
+  color: white;
+
+  background-color: red;
+}
+
+/* Header - Center block */
 #header-progress {
   display: flex;
   justify-content: center;
