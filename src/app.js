@@ -5,6 +5,7 @@ import { firebaseConfig } from '../firebase.config'
 import './styles/style.css'
 import { View } from './components/View'
 import { Model } from './components/Model'
+import { Message } from './components/Message'
 
 firebase.initializeApp(firebaseConfig)
 
@@ -38,7 +39,7 @@ class Controller {
           this.view.updateGameProgressDOM(characterFound.characterName)
           this.view.markCharacterFound()
         } else {
-          this.view.displayMessageNotFound(userX, userY)
+          Message.displayMessageNotFound(userX, userY)
         }
 
         this.view.removeBoxTarget()
@@ -63,11 +64,11 @@ class Controller {
       in the endgame window */
     PubSub.subscribe('seconds_to_beat_calculated', (msg, seconds) => {
       if (this.model.checkIfRecordSet()) {
-        this.view.displaySubmitBlock()
+        Message.displaySubmitBlock()
       } else {
-        this.view.hideSubmitBlock()
+        Message.hideSubmitBlock()
       }
-      this.view.displayUserTime(seconds)
+      Message.displayUserTime(seconds)
     })
 
     /* Passing the user's name and time to the Model
@@ -82,7 +83,7 @@ class Controller {
     /* Notifying the user that their name has been successfully added
       to the leaderboard */
     PubSub.subscribe('user_name_sent_successfully', () => {
-      this.view.displayMessageSentSuccessfully()
+      Message.displayMessageSentSuccessfully()
     })
   }
 
