@@ -130,4 +130,14 @@ export class Model {
     this.gameProgress[characterName] = true
     PubSub.publish('game_progress_data_updated')
   }
+
+  resetGameData () {
+    this.timestampSeconds = {}
+    this.secondsTakenToBeat = 0
+    this.gameProgress = {
+      waldo: false,
+      odlaw: false,
+      wizard: false
+    }
+  }
 }
