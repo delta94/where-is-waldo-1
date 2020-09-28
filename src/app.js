@@ -45,8 +45,9 @@ class Controller {
         this.view.removeSearchMenu()
       })
 
-    /* The user clicks the restart button */
-    PubSub.subscribe('restart_button_clicked', () => {
+    /* The user clicks the restart button and waits for the countdown
+      to expire */
+    PubSub.subscribe('restart_countdown_expired', () => {
       this.restartGame()
     })
 

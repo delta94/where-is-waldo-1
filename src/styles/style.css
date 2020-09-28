@@ -293,6 +293,21 @@ body {
   padding: 0 4px;
 }
 
+/* Message before a game restart */
+#message-before-restart {
+  display: flex;
+  justify-content: center;
+
+  align-self: center;
+  width: 200px;
+  height: 100px;
+  padding: 0 8px;
+
+  font-size: 36px;
+
+  visibility: hidden;
+}
+
 /* A cover for the game field that stops the player
   from clicking on the background */
 #cover {

@@ -67,7 +67,7 @@ export class View {
     /* Restart button */
     const buttonRestart = document.getElementById('btn-restart')
     buttonRestart.addEventListener('click', () => {
-      PubSub.publish('restart_button_clicked')
+      this.displayMessageBeforeRestart()
     })
   }
 
@@ -271,6 +271,26 @@ export class View {
     setTimeout(() => {
       messageNameAdded.style.visibility = 'hidden'
     }, 4000)
+  }
+
+  displayMessageBeforeRestart () {
+    const messageBeforeRestart =
+      document.getElementById('message-before-restart')
+    messageBeforeRestart.style.visibility = 'visible'
+
+    let counter = 2
+
+    /* Counting down before resetting the game */
+    setInterval(() => {
+      messageBeforeRestart.textContent = counter
+      counter--
+
+      if (counter < 0) {
+        messageBeforeRestart.style.visibility = 'hidden'
+        PubSub.publish('restart_countdown_expired')
+        clearInterval()
+      }
+    }, 1000)
   }
 
   initializeGameOverDOM () {
