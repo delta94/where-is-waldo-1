@@ -19,20 +19,6 @@ body {
 
   height: 70px;
 }
-#stop-watch {
-  display: flex;
-  align-items: center;
-
-  height: 50px;
-  margin-left: 18px;
-  padding: 0 10px;
-
-  font-size: 18px;
-
-  background-color: lightgoldenrodyellow;
-  border: 1px transparent;
-  border-radius: 3px;
-}
 
 /* Buttons */
 .btn {

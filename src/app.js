@@ -15,7 +15,6 @@ class Controller {
 
     this.initListeners()
     this.initServerData()
-    this.view.updateStopWatchDOM()
   }
 
   initListeners () {
@@ -81,14 +80,13 @@ class Controller {
   async initServerData () {
     this.model.getBackgroundImageFromServer()
     this.model.getCoordinatesFromServer()
-    await this.model.sendTimestampToServer('start')
+    this.model.sendTimestampToServer('start')
   }
 
   async restartGame () {
     this.view.resetGameDOM()
     this.model.resetGameData()
-    await this.model.sendTimestampToServer('start')
-    this.view.updateStopWatchDOM()
+    this.model.sendTimestampToServer('start')
   }
 }
 
