@@ -39,7 +39,7 @@ export class View {
     /* Restart button */
     const buttonRestart = document.getElementById('btn-restart')
     buttonRestart.addEventListener('click', () => {
-      Message.displaymessageCountdown()
+      Message.displayMessageCountdown()
     })
   }
 

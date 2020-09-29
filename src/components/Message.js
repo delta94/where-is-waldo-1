@@ -68,7 +68,7 @@ export class Message {
     }, 4000)
   }
 
-  static displaymessageCountdown () {
+  static displayMessageCountdown () {
     const messageCountdown =
       document.getElementById('message-countdown')
 
