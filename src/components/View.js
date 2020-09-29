@@ -43,6 +43,18 @@ export class View {
     })
   }
 
+  initGameDOM () {
+    /* Hiding the game title */
+    const titleGame = document.getElementById('title-game')
+    titleGame.style.display = 'none'
+
+    /* Displaying characters in the header to track user progress */
+    const itemsProgress = document.querySelectorAll('.progress-item')
+    itemsProgress.forEach(item => {
+      item.style.display = 'flex'
+    })
+  }
+
   loadBackgroundImage (URL) {
     const imgBackground = document.getElementById('img-background')
     imgBackground.src = URL

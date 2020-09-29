@@ -71,7 +71,6 @@ body {
   outline: 1px solid;
 }
 .progress-item {
-  display: flex;
   justify-content: center;
   align-items: center;
 

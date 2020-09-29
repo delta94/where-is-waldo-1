@@ -21,6 +21,7 @@ class Controller {
     PubSub.subscribe('level_chosen', (msg, levelId) => {
       this.initListeners()
       this.initServerData(levelId)
+      this.view.initGameDOM()
     })
   }
 
