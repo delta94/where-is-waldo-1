@@ -324,3 +324,61 @@ body {
 
   visibility: hidden;
 }
+
+/* Level Selector */
+#level-selector {
+  position: absolute;
+  z-index: 1;
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 1000px;
+
+  background-color: pink;
+  outline: 1px solid;
+}
+.list-level {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin: 0;
+  padding: 0;
+}
+#list-level-title {
+  align-self: center;
+
+  margin: 15px 0;
+
+  font-size: 28px;
+}
+.level-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 300px;
+  margin: 15px;
+  padding: 5px 0;
+
+  list-style-type: none;
+  background-color: white;
+  border: 1px transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.level-option:hover {
+  background-color: lightgoldenrodyellow;
+}
+.level-option-description {
+  display: flex;
+
+  margin-top: 5px;
+}
+.level-option-description p {
+  margin: 5px;
+
+  font-size: 20px;
+}
