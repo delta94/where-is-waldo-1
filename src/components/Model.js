@@ -50,10 +50,10 @@ export class Model {
     }
   }
 
-  async getCoordinatesFromServer () {
+  async getCoordinatesFromServer (levelId) {
     try {
-      const coordinatesCollection =
-        firebase.firestore().collection('coordinates')
+      const coordinatesCollection = firebase.firestore()
+        .collection('coordinates').doc(levelId).collection('coordinates')
 
       const response = await coordinatesCollection.get()
 

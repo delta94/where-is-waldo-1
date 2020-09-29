@@ -96,7 +96,7 @@ class Controller {
 
   async initServerData (levelId) {
     this.model.getBackgroundImageFromServer(levelId)
-    this.model.getCoordinatesFromServer()
+    this.model.getCoordinatesFromServer(levelId)
     this.model.sendTimestampToServer('start')
   }
 
