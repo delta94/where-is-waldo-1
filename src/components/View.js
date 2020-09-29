@@ -137,6 +137,14 @@ export class View {
       )
       optionWizard.textContent = 'Wizard'
 
+      const optionWenda = createElement(
+        'div',
+        'menu-search-option',
+        'menu-search-option-wenda',
+        menuSearchContainer
+      )
+      optionWenda.textContent = 'Wenda'
+
       /* Placing menuSearchContainer on the coordinates of the user's click */
       menuSearchContainer.style.left = e.offsetX + 40 + 'px'
       menuSearchContainer.style.top = e.offsetY + 15 + 'px'
@@ -146,7 +154,8 @@ export class View {
       PubSub.publish('search_menu_created', [
         optionWaldo,
         optionOdlaw,
-        optionWizard
+        optionWizard,
+        optionWenda
       ])
     }
   }
