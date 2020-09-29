@@ -68,23 +68,23 @@ export class Message {
     }, 4000)
   }
 
-  static displayMessageBeforeRestart () {
-    const messageBeforeRestart =
-      document.getElementById('message-before-restart')
+  static displaymessageCountdown () {
+    const messageCountdown =
+      document.getElementById('message-countdown')
 
     let counter = 3
 
-    messageBeforeRestart.textContent = counter
-    messageBeforeRestart.style.visibility = 'visible'
+    messageCountdown.textContent = counter
+    messageCountdown.style.visibility = 'visible'
 
     /* Counting down before resetting the game */
     const interval = setInterval(() => {
       counter--
-      messageBeforeRestart.textContent = counter
+      messageCountdown.textContent = counter
 
       if (counter < 1) {
-        messageBeforeRestart.style.visibility = 'hidden'
-        PubSub.publish('restart_countdown_expired')
+        messageCountdown.style.visibility = 'hidden'
+        PubSub.publish('countdown_expired')
         clearInterval(interval)
       }
     }, 1000)

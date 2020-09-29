@@ -54,7 +54,7 @@ class Controller {
 
     /* The user clicks the restart button and waits for the countdown
       to expire */
-    PubSub.subscribe('restart_countdown_expired', () => {
+    PubSub.subscribe('countdown_expired', () => {
       this.restartGame()
     })
 

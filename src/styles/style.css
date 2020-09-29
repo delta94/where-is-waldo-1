@@ -298,8 +298,8 @@ body {
   padding: 0 4px;
 }
 
-/* Message before a game restart */
-#message-before-restart {
+/* Countdown message */
+#message-countdown {
   display: flex;
   justify-content: center;
 
