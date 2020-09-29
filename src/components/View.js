@@ -43,7 +43,7 @@ export class View {
     })
   }
 
-  initGameDOM () {
+  initGameDOM (characterNamesArray) {
     /* Hiding the game title */
     const titleGame = document.getElementById('title-game')
     titleGame.style.display = 'none'
@@ -51,7 +51,12 @@ export class View {
     /* Displaying characters in the header to track user progress */
     const itemsProgress = document.querySelectorAll('.progress-item')
     itemsProgress.forEach(item => {
-      item.style.display = 'flex'
+      /* Displaying only the characters that are present in the picture */
+      for (let i = 0; i < characterNamesArray.length; i++) {
+        if (item.id === `progress-item-${characterNamesArray[i]}`) {
+          item.style.display = 'flex'
+        }
+      }
     })
   }
 
@@ -61,6 +66,8 @@ export class View {
   }
 
   placeBoxTarget (e) {
+    console.log(e.offsetX)
+    console.log(e.offsetY)
     const rootElement = document.getElementById('game-field')
 
     /* Removing the element when clicked outside of it */

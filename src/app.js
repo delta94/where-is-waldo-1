@@ -18,10 +18,11 @@ class Controller {
     LevelSelector.init()
 
     /* Waiting for the player to choose a level */
-    PubSub.subscribe('level_chosen', (msg, levelId) => {
+    PubSub.subscribe('level_chosen', async (msg, levelId) => {
       this.initListeners()
-      this.initServerData(levelId)
-      this.view.initGameDOM()
+      await this.initServerData(levelId)
+      this.model.initCharactersToFind()
+      this.view.initGameDOM(Object.keys(this.model.gameProgress))
     })
   }
 
@@ -96,7 +97,7 @@ class Controller {
 
   async initServerData (levelId) {
     this.model.getBackgroundImageFromServer(levelId)
-    this.model.getCoordinatesFromServer(levelId)
+    await this.model.getCoordinatesFromServer(levelId)
     this.model.sendTimestampToServer('start')
   }
 

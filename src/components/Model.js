@@ -9,11 +9,7 @@ export class Model {
     this.timestampSeconds = {}
     this.secondsTakenToBeat = 0
 
-    this.gameProgress = {
-      waldo: false,
-      odlaw: false,
-      wizard: false
-    }
+    this.gameProgress = {}
 
     /* Checking if the player has found all characters
       each time they find one */
@@ -35,6 +31,14 @@ export class Model {
 
       PubSub.publish('seconds_to_beat_calculated', this.secondsTakenToBeat)
     })
+  }
+
+  /* Checking how many characters are on the picture.
+    Then adding each one into the gameProgress object. */
+  initCharactersToFind () {
+    for (const character of this.coordinatesArray) {
+      this.gameProgress[character.characterName] = false
+    }
   }
 
   async getBackgroundImageFromServer (levelId) {
@@ -154,10 +158,7 @@ export class Model {
   resetGameData () {
     this.timestampSeconds = {}
     this.secondsTakenToBeat = 0
-    this.gameProgress = {
-      waldo: false,
-      odlaw: false,
-      wizard: false
-    }
+    this.gameProgress = {}
+    this.initCharactersToFind()
   }
 }
