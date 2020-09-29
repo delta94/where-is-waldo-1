@@ -37,10 +37,10 @@ export class Model {
     })
   }
 
-  async getBackgroundImageFromServer () {
+  async getBackgroundImageFromServer (levelId) {
     try {
       const storage = firebase.storage()
-      const imageLevel1 = storage.ref('images/background/level-1.jpg')
+      const imageLevel1 = storage.ref(`images/background/${levelId}.jpg`)
       const imageURL = await imageLevel1.getDownloadURL()
 
       /* Sending it to the Controller */

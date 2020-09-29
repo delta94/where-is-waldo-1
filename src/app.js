@@ -6,6 +6,7 @@ import './styles/style.css'
 import { View } from './components/View'
 import { Model } from './components/Model'
 import { Message } from './components/Message'
+import { LevelSelector } from './components/LevelSelector'
 
 firebase.initializeApp(firebaseConfig)
 
@@ -14,8 +15,13 @@ class Controller {
     this.model = new Model()
     this.view = new View()
 
-    this.initListeners()
-    this.initServerData()
+    LevelSelector.init()
+
+    /* Waiting for the player to choose a level */
+    PubSub.subscribe('level_chosen', (msg, levelId) => {
+      this.initListeners()
+      this.initServerData(levelId)
+    })
   }
 
   initListeners () {
@@ -87,8 +93,8 @@ class Controller {
     })
   }
 
-  async initServerData () {
-    this.model.getBackgroundImageFromServer()
+  async initServerData (levelId) {
+    this.model.getBackgroundImageFromServer(levelId)
     this.model.getCoordinatesFromServer()
     this.model.sendTimestampToServer('start')
   }

@@ -329,12 +329,12 @@ body {
 #level-selector {
   position: absolute;
   z-index: 1;
-  align-self: center;
 
   display: flex;
   flex-direction: column;
 
   width: 1000px;
+  margin: 120px auto;
 
   background-color: pink;
   outline: 1px solid;
