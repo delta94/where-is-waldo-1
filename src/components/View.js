@@ -62,6 +62,10 @@ export class View {
     /* Displaying the restart button in the header */
     const buttonRestart = document.getElementById('btn-restart')
     buttonRestart.style.visibility = 'visible'
+
+    /* Displaying the level-selector button in the header */
+    const buttonSelectLevel = document.getElementById('btn-select-level')
+    buttonSelectLevel.style.visibility = 'visible'
   }
 
   loadBackgroundImage (URL) {

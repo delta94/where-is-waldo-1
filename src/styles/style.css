@@ -96,6 +96,23 @@ body {
   display: flex;
   align-items: center;
 }
+#btn-select-level {
+  height: 40px;
+  margin-right: 20px;
+  padding: 0 10px;
+
+  font-size: 20px;
+  color: black;
+
+  background-color: pink;
+
+  visibility: hidden;
+}
+#btn-select-level:hover {
+  color: white;
+
+  background-color: red;
+}
 .link-navigation {
   display: flex;
   align-items: center;
