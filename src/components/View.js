@@ -13,7 +13,6 @@ export class View {
     this.currentClickCoordinates = {}
 
     this.initListeners()
-    this.resetGameDOM()
   }
 
   initListeners () {
