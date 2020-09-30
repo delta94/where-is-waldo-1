@@ -8,6 +8,7 @@ export class Model {
     this.coordinatesArray = []
     this.timestampSeconds = {}
     this.secondsTakenToBeat = 0
+    this.levelId = ''
 
     this.gameProgress = {}
 
@@ -104,8 +105,9 @@ export class Model {
       })
   }
 
-  sendUserEntryToServerLeaderboard (userName, time) {
+  sendUserEntryToServerLeaderboard (userName, time, levelId) {
     const leaderboard = firebase.firestore().collection('leaderboard')
+      .doc(levelId).collection('leaderboard')
     leaderboard.add({ userName, time })
       .then(() => {
         /* Notifying the Controller if the name has been successfully sent
@@ -156,9 +158,13 @@ export class Model {
   }
 
   resetGameData (isLevelChanged = false) {
+    if (isLevelChanged) {
+      this.coordinatesArray = []
+      this.levelId = ''
+    }
+
     this.timestampSeconds = {}
     this.secondsTakenToBeat = 0
-    if (isLevelChanged) this.coordinatesArray = []
     this.gameProgress = {}
   }
 }

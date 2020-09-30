@@ -22,11 +22,17 @@ class Controller {
   initListeners () {
     /* Waiting for the player to choose a level when INITIALIZING the game */
     PubSub.subscribe('level_chosen', async (msg, levelId) => {
+      /* Resetting Game Data and DOM */
       this.view.resetGameDOM()
       this.model.resetGameData(true)
+
+      /* Initializing Game Data and DOM */
       await this.initServerData(levelId)
       this.model.initCharactersToFind()
       this.view.initGameDOM(Object.keys(this.model.gameProgress))
+
+      /* Setting the current level id */
+      this.model.levelId = levelId
     })
 
     /* Passing the background to the View once  the Model has gotten it
@@ -86,7 +92,8 @@ class Controller {
     PubSub.subscribe('username_entered', (msg, userInput) => {
       this.model.sendUserEntryToServerLeaderboard(
         userInput,
-        this.model.secondsTakenToBeat
+        this.model.secondsTakenToBeat,
+        this.model.levelId
       )
     })
 
