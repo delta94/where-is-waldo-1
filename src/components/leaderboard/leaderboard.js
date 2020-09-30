@@ -21,6 +21,7 @@ class Leaderboard {
   initListeners () {
     /* Displaying the data from the server in the DOM */
     PubSub.subscribe('data_leaderboard_loaded', () => {
+      this.toggleAnimationLoading(false)
       this.displayDataFromServer()
     })
 
@@ -30,6 +31,7 @@ class Leaderboard {
       button.addEventListener('click', () => {
         this.removeData()
         this.removeDataFromDOM()
+        this.toggleAnimationLoading()
         this.getLeaderboardDataFromServer(button.dataset.level)
         this.displayDataFromServer()
       })
@@ -86,6 +88,13 @@ class Leaderboard {
         item.remove()
       }
     })
+  }
+
+  toggleAnimationLoading (doActivate = true) {
+    const loaderLeaderboard = document.getElementById('loader-leaderboard')
+
+    doActivate === true ? loaderLeaderboard.style.display = ''
+      : loaderLeaderboard.style.display = 'none'
   }
 }
 
