@@ -16,17 +16,19 @@ class Controller {
     this.view = new View()
 
     LevelSelector.init()
+    this.initListeners()
+  }
 
-    /* Waiting for the player to choose a level */
+  initListeners () {
+    /* Waiting for the player to choose a level when INITIALIZING the game */
     PubSub.subscribe('level_chosen', async (msg, levelId) => {
-      this.initListeners()
+      this.view.resetGameDOM()
+      this.model.resetGameData(true)
       await this.initServerData(levelId)
       this.model.initCharactersToFind()
       this.view.initGameDOM(Object.keys(this.model.gameProgress))
     })
-  }
 
-  initListeners () {
     /* Passing the background to the View once  the Model has gotten it
       from the server */
     PubSub.subscribe('background_loaded', (msg, URL) => {
@@ -101,9 +103,10 @@ class Controller {
     this.model.sendTimestampToServer('start')
   }
 
-  async restartGame () {
+  restartGame () {
     this.view.resetGameDOM()
     this.model.resetGameData()
+    this.model.initCharactersToFind()
     this.model.sendTimestampToServer('start')
   }
 }

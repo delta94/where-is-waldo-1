@@ -41,6 +41,13 @@ export class View {
     buttonRestart.addEventListener('click', () => {
       Message.displayMessageCountdown()
     })
+
+    /* Level-selector button in the header */
+    const buttonSelectLevel = document.getElementById('btn-select-level')
+    const levelSelectorWindow = document.getElementById('level-selector')
+    buttonSelectLevel.addEventListener('click', () => {
+      levelSelectorWindow.style.visibility = 'visible'
+    })
   }
 
   initGameDOM (characterNamesArray) {
@@ -50,6 +57,11 @@ export class View {
 
     /* Displaying characters in the header to track user progress */
     const itemsProgress = document.querySelectorAll('.progress-item')
+
+    itemsProgress.forEach(item => {
+      item.style.display = 'none'
+    })
+
     itemsProgress.forEach(item => {
       /* Displaying only the characters that are present in the picture */
       for (let i = 0; i < characterNamesArray.length; i++) {

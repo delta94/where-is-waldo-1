@@ -155,10 +155,10 @@ export class Model {
     PubSub.publish('game_progress_data_updated')
   }
 
-  resetGameData () {
+  resetGameData (isLevelChanged = false) {
     this.timestampSeconds = {}
     this.secondsTakenToBeat = 0
+    if (isLevelChanged) this.coordinatesArray = []
     this.gameProgress = {}
-    this.initCharactersToFind()
   }
 }
