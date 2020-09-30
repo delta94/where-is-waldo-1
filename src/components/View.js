@@ -186,7 +186,7 @@ export class View {
 
   resetGameDOM () {
     /* Resetting checkboxes in the header */
-    const checkboxes = document.querySelectorAll('#header-progress input')
+    const checkboxes = document.querySelectorAll('#header-game input')
     checkboxes.forEach(checkbox => {
       checkbox.checked = false
     })
