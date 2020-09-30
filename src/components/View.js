@@ -58,6 +58,10 @@ export class View {
         }
       }
     })
+
+    /* Displaying the restart button in the header */
+    const buttonRestart = document.getElementById('btn-restart')
+    buttonRestart.style.visibility = 'visible'
   }
 
   loadBackgroundImage (URL) {

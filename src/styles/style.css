@@ -38,6 +38,8 @@ body {
   font-size: 20px;
 
   background-color: pink;
+
+  visibility: hidden;
 }
 #btn-restart:hover {
   color: white;
