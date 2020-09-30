@@ -85,8 +85,6 @@ export class View {
   }
 
   placeBoxTarget (e) {
-    console.log(e.offsetX)
-    console.log(e.offsetY)
     const rootElement = document.getElementById('game-field')
 
     /* Removing the element when clicked outside of it */
