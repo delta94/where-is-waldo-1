@@ -16,6 +16,7 @@ class Controller {
     this.view = new View()
 
     LevelSelector.init()
+    Message.init()
     this.initListeners()
   }
 

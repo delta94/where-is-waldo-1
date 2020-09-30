@@ -118,5 +118,3 @@ export class Message {
     messageEndgame.style.visibility = 'visible'
   }
 }
-
-Message.init()
