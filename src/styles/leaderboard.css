@@ -61,6 +61,44 @@ header h1 {
   background-color: red;
 }
 
+/* List of levels */
+#list-levels {
+  display: flex;
+  flex-direction: column;
+
+  width: 150px;
+  height: 300px;
+  margin-top: 150px;
+  margin-right: 15px;
+  padding: 5px 0;
+
+  list-style-type: none;
+
+  background-color: pink;
+  border: 1px transparent;
+  border-radius: 5px;
+}
+.btn {
+  border: 2px solid pink;
+}
+.btn:hover {
+  color: white;
+
+  background-color: red;
+}
+.btn-select-level {
+  width: 120px;
+  height: 50px;
+
+  font-size: 20px;
+
+  background-color: white;
+}
+.list-item-levels {
+  display: flex;
+  justify-content: center;
+}
+
 /* List of players */
 #list-players {
   width: 800px;
