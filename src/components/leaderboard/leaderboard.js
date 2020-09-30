@@ -12,6 +12,10 @@ class Leaderboard {
     this.dataLeaderboard = []
     this.initListeners()
     this.getLeaderboardDataFromServer('level-1')
+
+    /* Highlighting the first button when initializing the page */
+    const buttonsSelectLevel = document.querySelector('.btn-select-level:first-child')
+    buttonsSelectLevel.classList.add('btn-toggled')
   }
 
   initListeners () {
