@@ -33,7 +33,7 @@ class Leaderboard {
   }
 
   displayDataFromServer () {
-    const listPlayers = document.getElementById('list-players')
+    const listPlayers = document.getElementById('leaderboard-list-players')
     const listEntryTemplate = document.getElementById('list-template')
 
     this.dataLeaderboard.forEach(entry => {
