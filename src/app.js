@@ -79,7 +79,7 @@ class Controller {
     /* Displaying the seconds it has taken for the player to beat the game
       in the endgame window */
     PubSub.subscribe('seconds_to_beat_calculated', (msg, seconds) => {
-      if (this.model.checkIfRecordSet()) {
+      if (this.model.checkIfRecordSet(this.model.levelId)) {
         Message.displaySubmitBlock()
       } else {
         Message.hideSubmitBlock()

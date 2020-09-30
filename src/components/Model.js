@@ -132,8 +132,9 @@ export class Model {
     })
   }
 
-  async checkIfRecordSet () {
+  async checkIfRecordSet (levelId) {
     const leaderboard = firebase.firestore().collection('leaderboard')
+      .doc(levelId).collection('leaderboard')
     const response = await leaderboard.get()
 
     let isRecordSet = false
