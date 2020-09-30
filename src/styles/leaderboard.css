@@ -82,7 +82,7 @@ header h1 {
   padding: 5px 0;
 }
 .btn {
-  border: 2px solid pink;
+  border: 3px solid pink;
 
   cursor: pointer;
 }
@@ -143,4 +143,10 @@ header h1 {
 }
 #list-template {
   display: none;
+}
+
+/* Helper classes */
+.btn-toggled {
+  background-color: lightgoldenrodyellow;
+  border-color: red;
 }
