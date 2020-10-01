@@ -33,7 +33,6 @@ class Leaderboard {
         this.removeDataFromDOM()
         this.toggleAnimationLoading()
         this.getLeaderboardDataFromServer(button.dataset.level)
-        this.displayDataFromServer()
       })
 
       /* Highlighting the clicked button only */
@@ -64,6 +63,8 @@ class Leaderboard {
   displayDataFromServer () {
     const listPlayers = document.getElementById('leaderboard-list-players')
     const listEntryTemplate = document.getElementById('list-template')
+    const placeholderTemplate =
+      document.getElementById('list-placeholder-empty-template')
 
     this.dataLeaderboard.forEach(entry => {
       const listEntry = listEntryTemplate.cloneNode(true)
@@ -73,6 +74,14 @@ class Leaderboard {
         `Has finished in ${entry.time} seconds`
       listPlayers.append(listEntry)
     })
+
+    /* Displaying a placeholder when there is no entries in the leaderboard */
+    if (this.dataLeaderboard.length < 1) {
+      const placeholder = placeholderTemplate.cloneNode(true)
+      placeholder.removeAttribute('id')
+      placeholder.id = 'list-placeholder-empty'
+      listPlayers.append(placeholder)
+    }
   }
 
   removeData () {
@@ -84,7 +93,8 @@ class Leaderboard {
     const itemsList = listPlayers.querySelectorAll('.list-item')
 
     itemsList.forEach(item => {
-      if (item.id !== 'list-template') {
+      if (item.id !== 'list-template' &&
+        item.id !== 'list-placeholder-empty-template') {
         item.remove()
       }
     })

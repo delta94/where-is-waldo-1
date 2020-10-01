@@ -146,6 +146,12 @@ header h1 {
 #list-template {
   display: none;
 }
+#list-placeholder-empty-template {
+  display: none;
+}
+#list-placeholder-empty {
+  padding: 15px;
+}
 
 /* Helper classes */
 .btn-toggled {
