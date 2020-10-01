@@ -51,7 +51,7 @@ export class Model {
       /* Sending it to the Controller */
       PubSub.publish('background_loaded', imageURL)
     } catch (error) {
-      console.log('(When getting the background image): ' + error)
+      throw new Error('(When getting the background image): ' + error)
     }
   }
 
@@ -66,7 +66,7 @@ export class Model {
         this.coordinatesArray.push(responsePiece.data())
       })
     } catch (error) {
-      console.log('(When getting the coordinates): ' + error)
+      throw new Error('(When getting the coordinates): ' + error)
     }
   }
 
@@ -86,7 +86,7 @@ export class Model {
         PubSub.publish('timestamps_loaded')
       }
     } catch (error) {
-      console.log('(When getting a timestamp): ' + error)
+      throw new Error('(When getting a timestamp): ' + error)
     }
   }
 
@@ -101,7 +101,7 @@ export class Model {
         this.getTimestampFromServer(documentName)
       })
       .catch(error => {
-        console.log('(When sending a timestamp to the server):' + error)
+        throw new Error('(When sending a timestamp to the server):' + error)
       })
   }
 
@@ -115,7 +115,7 @@ export class Model {
         PubSub.publish('user_name_sent_successfully')
       })
       .catch(error => {
-        console.log('(When sending the user name to the server)' + error)
+        throw new Error('(When sending the user name to the server)' + error)
       })
   }
 
