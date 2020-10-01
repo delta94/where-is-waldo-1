@@ -345,6 +345,7 @@ body {
   display: flex;
   justify-content: center;
 
+  z-index: 1;
   align-self: center;
   width: 200px;
   height: 100px;

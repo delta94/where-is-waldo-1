@@ -215,6 +215,10 @@ export class View {
       to the leaderboard */
     const messageNameAdded = document.getElementById('message-name-added')
     messageNameAdded.style.visibility = 'hidden'
+
+    /* Hiding the level-selector window */
+    const levelSelectorWindow = document.getElementById('level-selector')
+    levelSelectorWindow.classList.add('not-visible')
   }
 
   sendUserClickData (eventTarget) {
