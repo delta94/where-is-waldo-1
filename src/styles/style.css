@@ -24,6 +24,8 @@ body {
 .btn {
   border: 1px transparent;
   border-radius: 3px;
+
+  animation: fade-in-translate .3s ease-in;
 }
 .btn:hover {
   cursor: pointer;
@@ -81,6 +83,8 @@ body {
   font-size: 22px;
 
   display: none;
+
+  animation: fade-in-translate .2s ease-in;
 }
 .progress-item label {
   padding: 0 5px;
@@ -173,8 +177,9 @@ body {
   width: 90px;
 
   background-color: white;
-  opacity: .6;
   border: 5px solid red;
+
+  animation: fade-in .2s ease-in-out;
 }
 .menu-search-option {
   display: flex;
@@ -216,6 +221,8 @@ body {
   background-color: pink;
   border: 3px solid;
   border-radius: 3px;
+
+  animation: fade-in-translate .2s ease-in;
 }
 
 /* Not-found message */
@@ -415,4 +422,22 @@ body {
   margin: 5px;
 
   font-size: 20px;
+}
+
+/* Animation */
+
+@keyframes fade-in {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+@keyframes fade-in-translate {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
 }
