@@ -13,7 +13,7 @@ export class LevelSelector {
     optionsLevel.forEach(option => {
       option.addEventListener('click', (e) => {
         PubSub.publish('level_chosen', e.currentTarget.id)
-        levelSelector.style.visibility = 'hidden'
+        levelSelector.classList.add('not-visible')
       })
     })
   }

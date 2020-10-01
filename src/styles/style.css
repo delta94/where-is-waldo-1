@@ -441,3 +441,8 @@ body {
     transform: translateY(0)
   }
 }
+
+/* Helper classes */
+.not-visible {
+  visibility: hidden;
+}

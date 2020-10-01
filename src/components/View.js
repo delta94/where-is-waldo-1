@@ -45,7 +45,7 @@ export class View {
     const buttonSelectLevel = document.getElementById('btn-select-level')
     const levelSelectorWindow = document.getElementById('level-selector')
     buttonSelectLevel.addEventListener('click', () => {
-      levelSelectorWindow.style.visibility = 'visible'
+      levelSelectorWindow.classList.toggle('not-visible')
     })
   }
 
