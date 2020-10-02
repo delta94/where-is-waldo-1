@@ -223,3 +223,35 @@ describe('updateGameProgressData', () => {
     expect(model.gameProgress.odlaw).toEqual(true)
   })
 })
+
+describe('resetGameData', () => {
+  const model = new Model()
+  model.timestampSeconds = { test: 'test' }
+  model.secondsTakenToBeat = 33
+  model.gameProgress = { test: 'test' }
+  model.coordinatesArray = [test]
+  model.levelId = 'level-1'
+
+  test(`The function resets necessary properties.
+    It does NOT affect coordinatesArray and levelId
+      when there is no argument passed`, () => {
+    model.resetGameData()
+    expect(model.timestampSeconds).toEqual({})
+    expect(model.secondsTakenToBeat).toEqual(0)
+    expect(model.gameProgress).toEqual({})
+
+    expect(model.coordinatesArray).not.toEqual([])
+    expect(model.levelId).not.toEqual('')
+  })
+
+  test(`When true passed as an argument the function resets
+    coordinatesArray and levelId as well`, () => {
+    model.resetGameData(true)
+    expect(model.timestampSeconds).toEqual({})
+    expect(model.secondsTakenToBeat).toEqual(0)
+    expect(model.gameProgress).toEqual({})
+
+    expect(model.coordinatesArray).toEqual([])
+    expect(model.levelId).toEqual('')
+  })
+})
