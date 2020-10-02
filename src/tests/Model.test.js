@@ -110,6 +110,18 @@ describe('getCoordinatesFromServer', () => {
   })
 })
 
+describe('getBackgroundImageFromServer', () => {
+  test('The fetched data from the server is a URL of an image', () => {
+    const model = new Model()
+    model.getBackgroundImageFromServer = jest.fn((levelId) => {
+      return 'https://firebasestorage.googleapis.com/...'
+    })
+
+    expect(model.getBackgroundImageFromServer())
+      .toMatch(/^(https:\/\/)|(http:\/\/).*/)
+  })
+})
+
 test('Given a character name change gameProgress object', () => {
   const model = new Model()
   model.updateGameProgressData('waldo')
