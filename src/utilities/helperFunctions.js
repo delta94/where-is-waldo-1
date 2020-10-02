@@ -9,6 +9,8 @@ export function createElement (tag, className, elementId, parentElement) {
 export function convertToNumberFromCSS (property) {
   let result = ''
 
+  if (!property) throw new Error('There has been no argument passed')
+
   /* Returning only numbers */
   for (let i = 0; i < property.length; i++) {
     if (!isNaN(property[i])) result += property[i]
