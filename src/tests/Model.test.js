@@ -122,6 +122,49 @@ describe('getBackgroundImageFromServer', () => {
   })
 })
 
+describe('checkIfCharacterFound', () => {
+  const model = new Model()
+  model.coordinatesArray = [
+    {
+      characterName: 'odlaw',
+      xMax: 269,
+      xMin: 222,
+      yMax: 430,
+      yMin: 348
+    },
+    {
+      characterName: 'waldo',
+      xMax: 565,
+      xMin: 514,
+      yMax: 408,
+      yMin: 345
+    },
+    {
+      characterName: 'wizard',
+      xMax: 671,
+      xMin: 612,
+      yMax: 420,
+      yMin: 348
+    }
+  ]
+
+  test(`Given the coordinates and the name of a character the function returns
+    the object from coordinatesArray with corresponding values`, () => {
+    expect((model.checkIfCharacterFound(555, 384, 'waldo'))).toEqual({
+      characterName: 'waldo',
+      xMax: 565,
+      xMin: 514,
+      yMax: 408,
+      yMin: 345
+    })
+  })
+
+  test(`When the given coordinates or name don't match an object
+    in the coordinatesArray the function returns undefined`, () => {
+    expect((model.checkIfCharacterFound(11, 99, 'wizard'))).toEqual(undefined)
+  })
+})
+
 describe('updateGameProgressData', () => {
   test('Given a character name change gameProgress object', () => {
     const model = new Model()
