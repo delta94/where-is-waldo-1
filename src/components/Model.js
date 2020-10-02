@@ -66,7 +66,7 @@ export class Model {
         this.coordinatesArray.push(responsePiece.data())
       })
     } catch (error) {
-      throw new Error('(When getting the coordinates): ' + error)
+      throw new Error('(When getting the coordinates):' + error)
     }
   }
 
@@ -115,7 +115,7 @@ export class Model {
         PubSub.publish('user_name_sent_successfully')
       })
       .catch(error => {
-        throw new Error('(When sending the user name to the server)' + error)
+        throw new Error('(When sending the user name to the server):' + error)
       })
   }
 

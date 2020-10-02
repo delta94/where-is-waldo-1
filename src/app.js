@@ -36,7 +36,7 @@ class Controller {
       this.model.levelId = levelId
     })
 
-    /* Passing the background to the View once  the Model has gotten it
+    /* Passing the background to the View once the Model has gotten it
       from the server */
     PubSub.subscribe('background_loaded', (msg, URL) => {
       this.view.loadBackgroundImage(URL)
