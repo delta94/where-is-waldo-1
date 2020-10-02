@@ -165,6 +165,51 @@ describe('checkIfCharacterFound', () => {
   })
 })
 
+describe('checkIfRecordSet', () => {
+  let leaderboardFireBaseMock = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+  ]
+
+  const model = new Model()
+
+  model.checkIfRecordSet = jest.fn((levelId) => {
+    let isRecord = false
+
+    if (levelId === 'level-1') {
+      leaderboardFireBaseMock.forEach(entry => {
+        if (model.secondsTakenToBeat < entry) {
+          isRecord = true
+        }
+      })
+    }
+
+    if (leaderboardFireBaseMock.length < 20) isRecord = true
+    return isRecord
+  })
+
+  test(`If the player has found all characters faster than
+    anyone on the leaderboard return true`, () => {
+    model.secondsTakenToBeat = 5
+
+    expect(model.checkIfRecordSet('level-1')).toEqual(true)
+  })
+
+  test(`If the player has NOT found all characters faster than
+    anyone on the leaderboard return false`, () => {
+    model.secondsTakenToBeat = 33
+
+    expect(model.checkIfRecordSet('level-1')).toEqual(false)
+  })
+
+  test(`If leaderboard length is less than 20 entries the player's result is
+    considered a record and the function returns true`, () => {
+    leaderboardFireBaseMock = [1, 2, 3, 4]
+    model.secondsTakenToBeat = 33
+
+    expect(model.checkIfRecordSet('level-1')).toEqual(true)
+  })
+})
+
 describe('updateGameProgressData', () => {
   test('Given a character name change gameProgress object', () => {
     const model = new Model()
