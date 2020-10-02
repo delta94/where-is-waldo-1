@@ -49,6 +49,67 @@ describe('initCharactersToFind', () => {
   })
 })
 
+describe('getCoordinatesFromServer', () => {
+  test(`Fetched coordinates from the first level should be stored in
+    coordinatesArray`, async () => {
+    const level1FireBaseInfo = [
+      {
+        characterName: 'odlaw',
+        xMax: 269,
+        xMin: 222,
+        yMax: 430,
+        yMin: 348
+      },
+      {
+        characterName: 'waldo',
+        xMax: 565,
+        xMin: 514,
+        yMax: 408,
+        yMin: 345
+      },
+      {
+        characterName: 'wizard',
+        xMax: 671,
+        xMin: 612,
+        yMax: 420,
+        yMin: 348
+      }
+    ]
+    const model = new Model()
+    model.getCoordinatesFromServer = jest.fn((levelId) => {
+      if (levelId === 'level-1') {
+        level1FireBaseInfo.forEach(pieceInfo => {
+          model.coordinatesArray.push(pieceInfo)
+        })
+      }
+    })
+    model.getCoordinatesFromServer('level-1')
+    expect(model.coordinatesArray).toEqual([
+      {
+        characterName: 'odlaw',
+        xMax: 269,
+        xMin: 222,
+        yMax: 430,
+        yMin: 348
+      },
+      {
+        characterName: 'waldo',
+        xMax: 565,
+        xMin: 514,
+        yMax: 408,
+        yMin: 345
+      },
+      {
+        characterName: 'wizard',
+        xMax: 671,
+        xMin: 612,
+        yMax: 420,
+        yMin: 348
+      }
+    ])
+  })
+})
+
 test('Given a character name change gameProgress object', () => {
   const model = new Model()
   model.updateGameProgressData('waldo')
