@@ -108,5 +108,5 @@ class Leaderboard {
   }
 }
 
-const leaderboard = new Leaderboard()
-console.log(leaderboard)
+// eslint-disable-next-line no-new
+new Leaderboard()

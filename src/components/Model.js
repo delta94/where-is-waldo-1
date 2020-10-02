@@ -124,7 +124,6 @@ export class Model {
       if (userY > item.yMin && userY < item.yMax &&
           userX > item.xMin && userX < item.xMax &&
           nameChosen === item.characterName) {
-        console.log(`Found ${item.characterName}!`)
         return item
       } else {
         return false
