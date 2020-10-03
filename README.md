@@ -25,11 +25,11 @@ The player start with a picture of characters they need to find. Once they have 
 
 ### Tech learned
 
-[x] Firebase
-  [x] Firestore
-  [x] Storage
-  [x] Hosting
-[x] Webpack
++ [x] Firebase
+  + [x] Firestore
+  + [x] Storage
+  + [x] Hosting
++ [x] Webpack
   + I created a [template](webpack-template) to speed up the process of installing packages
 
 ## App Structure
