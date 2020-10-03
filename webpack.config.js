@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/' // Might cause an error in case of code splitting
+    publicPath: '/' // Might cause an error in case of code splitting
   },
 
   devServer: {
@@ -49,8 +49,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/components/leaderboard/leaderboard.html',
       filename: 'leaderboard.html',
-      chunks: ['leaderboard'],
-      inject: false
+      chunks: ['leaderboard']
     })
   ]
 }
