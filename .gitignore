@@ -1,4 +1,5 @@
 node_modules
 PLAN.md
-dist
+# dist
 sandbox.js
+.firebase
