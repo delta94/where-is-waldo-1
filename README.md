@@ -61,5 +61,5 @@ The app is also divided into two pages:
 
 Leaderboard page has its own Component that communicates with the server and displays the data from it.
 
-[wiki]: https://en.wikipedia.org/wiki/Where%27s_Wally%3F
-[webpack-template]: https://github.com/osechi3/utilities/blob/master/template.md
+[wiki]: https://en.wikipedia.org/wiki/Where%27s_Wally%3F/
+[webpack-template]: https://github.com/osechi3/utilities/blob/master/template.md/
