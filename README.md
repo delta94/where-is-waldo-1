@@ -2,7 +2,7 @@
 
 ## What is it
 
-This project is a web version of a british series of puzzle books called "[Where is Wally?](wiki)".
+This project is a web version of a british series of puzzle books called "[Where is Wally?](https://en.wikipedia.org/wiki/Where%27s_Wally)".
 
 ## How it works
 
@@ -30,7 +30,7 @@ The player start with a picture of characters they need to find. Once they have 
   + [x] Storage
   + [x] Hosting
 + [x] Webpack
-  + I created a [template](webpack-template) to speed up the process of installing packages
+  + I created a [template](https://github.com/osechi3/utilities/blob/master/template.md) to speed up the process of installing packages
 
 ## App Structure
 
@@ -60,6 +60,3 @@ The app is also divided into two pages:
 + Leaderboard page (leaderboard.html)
 
 Leaderboard page has its own Component that communicates with the server and displays the data from it.
-
-[wiki]: https://en.wikipedia.org/wiki/Where%27s_Wally%3F/
-[webpack-template]: https://github.com/osechi3/utilities/blob/master/template.md/
